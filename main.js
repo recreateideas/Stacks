@@ -1,5 +1,10 @@
-/* eslint-disable global-require, import/no-dynamic-require */
+/* eslint-disable no-console, global-require, import/no-dynamic-require */
 const logger = require('electron-log');
+const {
+    default: installExtension,
+    REDUX_DEVTOOLS,
+    REACT_DEVELOPER_TOOLS,
+} = require('electron-devtools-installer');
 require('update-electron-app')({
     logger,
 });
@@ -16,6 +21,15 @@ let mainWindow = null;
 if (process.mas) {
     app.setName('Moby');
 }
+
+const addReactReduxDevTools = () => {
+    installExtension(REACT_DEVELOPER_TOOLS)
+        .then(name => console.log(`Added Extension: ${name}`))
+        .catch(err => console.log(`An error occurred: ${err}`));
+    installExtension(REDUX_DEVTOOLS)
+        .then(name => console.log(`Added Extension: ${name}`))
+        .catch(err => console.log(`An error occurred: ${err}`));
+};
 
 const makeSingleInstance = () => {
     if (process.mas) { return; }
@@ -66,6 +80,7 @@ const initialize = () => {
             mainWindow.webContents.openDevTools();
             mainWindow.maximize();
             devtron.install();
+            addReactReduxDevTools();
         }
 
         mainWindow.on('closed', () => {
