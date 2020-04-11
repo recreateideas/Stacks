@@ -4,11 +4,14 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './redux';
 import App from './App';
+import { Theme } from './features';
 
 const render = (Component) => {
     ReactDOM.render(
         <Provider store={store}>
-            <Component />
+            <Theme>
+                <Component />
+            </Theme>
         </Provider>,
         document.getElementById('moby-app'),
     );

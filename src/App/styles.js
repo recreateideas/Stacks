@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
 const Application = styled.div`
-    font-family: Roboto;
-    font-weight: 300;
-    font-size: 25px;
-    font-style: italic;
-    color: white;
-    top: 20%;
-    position: absolute;
-    padding: 50px;
-    svg, span {
-        padding-left: 10px;
+    display: flex;
+    height: 100%;
+    * {
+        font-family: Roboto;
+        font-weight: normal;
+        font-size: 1em;
+    }
+    .page-content {
+        width: 100%;
     }
 `;
 
 export {
+    // eslint-disable-next-line import/prefer-default-export
     Application,
 };
