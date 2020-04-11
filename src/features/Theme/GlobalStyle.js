@@ -1,11 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: #003366;
-    padding: 0;
-    margin: 0;
-  }
+    html, body, #moby-app {
+      height: 100%;
+      margin: 0px;
+    }
 `;
 
 export default GlobalStyle;
