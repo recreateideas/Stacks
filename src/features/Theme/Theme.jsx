@@ -10,10 +10,10 @@ const Theme = (props) => {
     const isDark = mode === 'dark';
     const theme = themes[mode];
     const {
-        palette: { background },
+        palette: { neutral },
     } = theme;
     useLayoutEffect(() => {
-        document.body.style.backgroundColor = background;
+        document.body.style.backgroundColor = neutral['100'];
     }, [mode]);
     return (
         <>
