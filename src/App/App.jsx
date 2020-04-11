@@ -8,7 +8,9 @@ const App = () => (
     <>
         <Application>
             <Rocket />
-            <span>"Space isn't remote at all. It's only an hour's drive away, if your car could go straight upwards."</span>
+            <span>"Space isn't remote at all. It's only an hour's drive away,
+                if your car could go straight upwards."
+            </span>
         </Application>
         <GlobalStyle />
     </>

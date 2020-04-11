@@ -2,7 +2,8 @@
   "parser": "babel-eslint",
   "extends": [
     "prettier",
-    "react-app"
+    "airbnb"
+    // "react-app"
   ],
   "plugins": [
     "import",
@@ -28,13 +29,23 @@
         "SwitchCase": 1
       }
     ],
+    "react/jsx-indent": [
+      2,
+      4,
+      {
+        "indentLogicalExpressions": true
+      }
+    ],
     "linebreak-style": [
       "error",
       "unix"
     ],
+    "max-len": 1,
+    "global-require": 0,
+    "react/no-unescaped-entities": 0,
     "class-methods-use-this": 1,
     "react/jsx-one-expression-per-line": 0,
-    "jsx-filename-extension": 0,
+    "react/jsx-filename-extension": 0,
     "import/no-extraneous-dependencies": [
       "error",
       {

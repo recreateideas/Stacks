@@ -13,15 +13,15 @@ const tryConnection = () => client.connect({ port }, () => {
     if (!startedElectron) {
         startedElectron = true;
         const { stdout } = spawn('npm', ['run', 'electron-dev']);
-        stdout.on('data', function (data) {
+        stdout.on('data', (data) => {
+            // eslint-disable-next-line no-console
             console.log(data.toString().trim());
         });
     }
-}
-);
+});
 
 tryConnection();
 
-client.on('error', (error) => {
+client.on('error', (/* error */) => {
     setTimeout(tryConnection, 1000);
 });

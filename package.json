@@ -31,7 +31,7 @@
   "devDependencies": {
     "devtron": "1.4.0",
     "electron": "8.2.1",
-    "eslint": "5.16.0",
+    "eslint": "6.6.0",
     "eslint-config-airbnb": "17.1.1",
     "eslint-config-prettier": "6.0.0",
     "eslint-config-react-app": "4.0.1",
@@ -47,6 +47,7 @@
   "dependencies": {
     "electron-log": "4.1.1",
     "glob": "7.1.6",
+    "js-yaml": "^3.13.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-redux": "7.2.0",
