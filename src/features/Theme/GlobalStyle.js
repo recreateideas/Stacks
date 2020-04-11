@@ -5,6 +5,12 @@ const GlobalStyle = createGlobalStyle`
       height: 100%;
       margin: 0px;
     }
+    * {
+        font-family: Roboto;
+        font-weight: normal;
+        font-size: 1em;
+        color: ${props => props.theme.palette.neutral['700']};
+    }
 `;
 
 export default GlobalStyle;

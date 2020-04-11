@@ -1,5 +1,5 @@
 const lightTheme = {
-    font: {
+    fonts: {
         primary: "'Roboto', sans-serif",
     },
     palette: {

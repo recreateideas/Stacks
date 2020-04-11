@@ -1,9 +1,13 @@
 import React from 'react';
-import { Container } from './styles';
+import { Title, Container } from './styles';
 
 // eslint-disable-next-line arrow-body-style
 const MenuHeader = () => {
-    return (<Container>Moby</Container>);
+    return (
+        <Container className="menu-header">
+            <Title>Moby</Title>
+        </Container>
+    );
 };
 
 export default MenuHeader;

@@ -20,7 +20,7 @@ const Theme = (props) => {
             <ThemeProvider theme={{ ...theme, isDark }}>
                 {children}
             </ThemeProvider>
-            <GlobalStyle />
+            <GlobalStyle theme={{ ...theme }} />
         </>
     );
 };

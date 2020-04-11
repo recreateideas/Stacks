@@ -58,7 +58,7 @@ const initialize = () => {
             width: 1080,
             minWidth: 680,
             minHeight: 480,
-            height: 840,
+            height: 740,
             title: app.name,
             webPreferences: {
                 nodeIntegration: true,
@@ -81,6 +81,15 @@ const initialize = () => {
             mainWindow.maximize();
             devtron.install();
             addReactReduxDevTools();
+            require('electron-context-menu')({
+                labels: {
+                    cut: 'Cut',
+                    copy: 'Copy',
+                    paste: 'Paste',
+                    copyImageAddress: 'Copy Image Address',
+                    inspect: 'Inspect Element',
+                },
+            });
         }
 
         mainWindow.on('closed', () => {
