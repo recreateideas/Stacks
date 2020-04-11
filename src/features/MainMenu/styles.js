@@ -5,7 +5,7 @@ const Container = styled.div`
     width: 25%;
     min-width: 200px;
     box-sizing: border-box; 
-    border-right: solid 1px #cecece;
+    border-right: solid 1px ${props => props.theme.palette.neutral['200']};
     padding: 8px;
 `;
 
