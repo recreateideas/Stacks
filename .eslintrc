@@ -1,56 +1,58 @@
 {
-  "parser": "babel-eslint",
-  "extends": [
-    "prettier",
-    "airbnb"
-    // "react-app"
-  ],
-  "plugins": [
-    "import",
-    "promise",
-    "compat",
-    "react"
-  ],
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true,
-    "jest": true
-  },
-  "parserOptions": {
-    "ecmaVersion": 10,
-    "sourceType": "module"
-  },
-  "rules": {
-    "indent": [
-      "error",
-      4,
-      {
-        "SwitchCase": 1
-      }
+    "parser": "babel-eslint",
+    "extends": [
+        "prettier",
+        "airbnb"
+        // "react-app"
     ],
-    "react/jsx-indent": [
-      2,
-      4,
-      {
-        "indentLogicalExpressions": true
-      }
+    "plugins": [
+        "import",
+        "promise",
+        "compat",
+        "react"
     ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "max-len": 1,
-    "global-require": 0,
-    "react/no-unescaped-entities": 0,
-    "class-methods-use-this": 1,
-    "react/jsx-one-expression-per-line": 0,
-    "react/jsx-filename-extension": 0,
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": true
-      }
-    ]
-  }
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true,
+        "jest": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 10,
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "react/jsx-indent": [
+            2,
+            4,
+            {
+                "indentLogicalExpressions": true
+            }
+        ],
+        "react/jsx-indent-props": 0,
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "react/no-array-index-key": 0,
+        "max-len": 1,
+        "global-require": 0,
+        "react/no-unescaped-entities": 0,
+        "class-methods-use-this": 1,
+        "react/jsx-one-expression-per-line": 0,
+        "react/jsx-filename-extension": 0,
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ]
+    }
 }
