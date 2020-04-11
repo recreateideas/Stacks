@@ -1,11 +1,11 @@
 import ErrorBoundary from './ErrorBoundary';
 import AuthenticatedRoute from './AuthenticatedRoute';
-import MainMenu from './MainMenu';
+import SideBar from './SideBar';
 import Theme from './Theme';
 
 export {
     ErrorBoundary,
     AuthenticatedRoute,
-    MainMenu,
+    SideBar,
     Theme,
 };

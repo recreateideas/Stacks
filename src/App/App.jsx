@@ -4,8 +4,8 @@ import { ConnectedRouter as Router } from 'connected-react-router';
 import { Switch } from 'react-router-dom';
 import { history } from '../redux';
 import { routes } from '../routes';
-import { AuthenticatedRoute, ErrorBoundary, MainMenu } from '../features';
-import { Application } from './styles';
+import { AuthenticatedRoute, ErrorBoundary, SideBar } from '../features';
+import { Application, Page } from './styles';
 
 const App = () => (
     <Application>
@@ -14,7 +14,7 @@ const App = () => (
                 redirectUrl={undefined}
                 skipGetUser
                 render={props => (
-                    <MainMenu {...props} />)}
+                    <SideBar {...props} />)}
             />
             <Switch>
                 {Object.values(routes)
@@ -36,9 +36,9 @@ const App = () => (
                                 title={title}
                                 render={props => (
                                     <ErrorBoundary>
-                                        <div className="page-content">
+                                        <Page className="page-content">
                                             <Component {...props} />
-                                        </div>
+                                        </Page>
                                     </ErrorBoundary>
                                 )}
                             />

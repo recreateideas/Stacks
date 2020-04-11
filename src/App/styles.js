@@ -3,12 +3,14 @@ import styled from 'styled-components';
 const Application = styled.div`
     display: flex;
     height: 100%;
-    .page-content {
-        width: 100%;
-    }
+`;
+
+const Page = styled.div`
+    width: 100%;
+    padding: 24px 8px 8px 16px;
 `;
 
 export {
-    // eslint-disable-next-line import/prefer-default-export
+    Page,
     Application,
 };

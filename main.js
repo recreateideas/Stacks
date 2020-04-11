@@ -59,7 +59,7 @@ const initialize = () => {
             minWidth: 680,
             minHeight: 480,
             height: 740,
-            title: app.name,
+            titleBarStyle: 'hidden',
             webPreferences: {
                 nodeIntegration: true,
             },

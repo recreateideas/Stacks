@@ -1,6 +1,4 @@
 const palette = {
-    main: '#1ba8ef',
-    background: '#ffffff',
     neutral: {
         100: '#F7F8F9',
         200: '#DCE4E9',
@@ -63,7 +61,11 @@ const fonts = {
     primary: "'Roboto', sans-serif",
     h1: {
         fontSize: 20,
-        color: palette.main,
+        color: palette.primary['700'],
+    },
+    'h1-negative': {
+        fontSize: 20,
+        color: palette.primary['100'],
     },
 };
 
