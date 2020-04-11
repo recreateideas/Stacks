@@ -1,0 +1,7 @@
+/coverage/**
+/node_modules/**
+/dist/**
+/build/**
+src/index.html
+
+serviceWorker.js

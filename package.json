@@ -1,0 +1,69 @@
+{
+  "name": "moby",
+  "version": "1.0.0",
+  "description": "electron app to manage docker containers",
+  "main": "main.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "react-scripts start",
+    "dev": "BROWSER=none nf start",
+    "prod": "npm run build && npm run electron",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "electron": "electron .",
+    "lint": "eslint .",
+    "electron-dev": "ELECTRON_START_URL=http://localhost:5000 PORT=5000 electron . --debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/recreateideas/moby.git"
+  },
+  "keywords": [
+    "moby",
+    "docker",
+    "compose"
+  ],
+  "author": "recreateideas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/recreateideas/moby/issues"
+  },
+  "devDependencies": {
+    "devtron": "1.4.0",
+    "electron": "8.2.1",
+    "eslint": "5.16.0",
+    "eslint-config-airbnb": "17.1.1",
+    "eslint-config-prettier": "6.0.0",
+    "eslint-config-react-app": "4.0.1",
+    "eslint-plugin-compat": "3.3.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-react": "7.14.3",
+    "foreman": "3.0.1",
+    "react-hot-loader": "4.12.20",
+    "react-scripts": "3.4.1"
+  },
+  "dependencies": {
+    "electron-log": "4.1.1",
+    "glob": "7.1.6",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-redux": "7.2.0",
+    "redux": "4.0.5",
+    "styled-components": "5.1.0",
+    "update-electron-app": "1.5.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
