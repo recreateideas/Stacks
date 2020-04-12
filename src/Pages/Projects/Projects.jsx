@@ -9,6 +9,7 @@ const Projects = () => {
     const projects = useSelector(projectsSelectors.projects);
     useEffect(() => {
         dispatch(getProjects());
+    // eslint-disable-next-line
     }, []);
     return (
         <div> Projects {JSON.stringify(projects)}</div>

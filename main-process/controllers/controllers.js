@@ -1,7 +1,11 @@
 const {
-    listContainers: _listContainers,
-    getDockerCompose: _getDockerCompose,
-} = require('../utils');
+    docker: {
+        listContainers: _listContainers,
+    },
+    compose: {
+        getDockerCompose: _getDockerCompose,
+    },
+} = require('../services');
 
 const getContainers = (event) => {
     const all = true;

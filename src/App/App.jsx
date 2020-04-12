@@ -18,11 +18,8 @@ const App = () => {
     } = actions;
     useEffect(() => {
         dispatch(getContainers());
-    }, []);
-    // const { containers: containersSelectors } = selectors;
-    // const containers = useSelector(containersSelectors.containers);
-    useEffect(() => {
         dispatch(getProjects());
+    // eslint-disable-next-line
     }, []);
     return (
         <Application>

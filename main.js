@@ -10,7 +10,6 @@ const {
 } = require('electron-devtools-installer');
 const contextMenu = require('electron-context-menu');
 const path = require('path');
-const glob = require('glob');
 const devtron = require('devtron');
 const { app, BrowserWindow } = require('electron');
 const url = require('url');
@@ -46,10 +45,7 @@ const makeSingleInstance = () => {
     });
 };
 
-const loadMainProcess = () => {
-    const files = glob.sync(path.join(__dirname, '/main-process/**/*.js'));
-    files.forEach((file) => { require(file); });
-};
+const loadMainProcess = () => require(path.join(__dirname, '/main-process/main.js'));
 
 const initialize = () => {
     makeSingleInstance();

@@ -4,7 +4,7 @@ const { controllers, events } = require('../controllers');
 
 const eventEmitter = new EventEmitter();
 
-eventEmitter.on('new-docker-events', events.handleDockerEvents);
+eventEmitter.on('new-docker-events', events.processEventsList);
 
 ipcMain.on('get-containers', controllers.getContainers);
 

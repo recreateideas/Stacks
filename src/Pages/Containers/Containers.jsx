@@ -9,6 +9,7 @@ const Containers = () => {
     const containers = useSelector(containersSelectors.containers);
     useEffect(() => {
         dispatch(getContainers());
+    // eslint-disable-next-line
     }, []);
     return (
         <div> Containers {JSON.stringify(containers, null, 4)}</div>
