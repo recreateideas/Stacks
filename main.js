@@ -1,13 +1,14 @@
 /* eslint-disable no-console, global-require, import/no-dynamic-require */
 const logger = require('electron-log');
+require('update-electron-app')({
+    logger,
+});
 const {
     default: installExtension,
     REDUX_DEVTOOLS,
     REACT_DEVELOPER_TOOLS,
 } = require('electron-devtools-installer');
-require('update-electron-app')({
-    logger,
-});
+const contextMenu = require('electron-context-menu');
 const path = require('path');
 const glob = require('glob');
 const devtron = require('devtron');
@@ -59,7 +60,7 @@ const initialize = () => {
             minWidth: 680,
             minHeight: 480,
             height: 740,
-            titleBarStyle: 'hidden',
+            title: app.name,
             webPreferences: {
                 nodeIntegration: true,
             },
@@ -75,18 +76,16 @@ const initialize = () => {
                 slashes: true,
             });
         mainWindow.loadURL(startUrl);
-
         if (debug) {
             mainWindow.webContents.openDevTools();
             mainWindow.maximize();
             devtron.install();
             addReactReduxDevTools();
-            require('electron-context-menu')({
+            contextMenu({
                 labels: {
                     cut: 'Cut',
                     copy: 'Copy',
                     paste: 'Paste',
-                    copyImageAddress: 'Copy Image Address',
                     inspect: 'Inspect Element',
                 },
             });

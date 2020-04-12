@@ -14,7 +14,7 @@ const Theme = (props) => {
     } = theme;
     useLayoutEffect(() => {
         document.body.style.backgroundColor = neutral['100'];
-    }, [mode]);
+    }, [mode, neutral]);
     return (
         <>
             <ThemeProvider theme={{ ...theme, isDark }}>

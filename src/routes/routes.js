@@ -1,6 +1,16 @@
+import { Widgets } from '@material-ui/icons';
 import * as Pages from '../Pages';
 
 const routes = {
+    projects: {
+        label: 'Projects',
+        icon: Widgets,
+        route: '/projects',
+        exact: true,
+        components: {
+            mainView: Pages.Projects,
+        },
+    },
     default: {
         title: 'Where am I ??',
         path: '',

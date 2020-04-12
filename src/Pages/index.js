@@ -1,6 +1,7 @@
 import FourOFour from './FourOFour';
+import Projects from './Projects';
 
 export {
-    // eslint-disable-next-line import/prefer-default-export
+    Projects,
     FourOFour,
 };
