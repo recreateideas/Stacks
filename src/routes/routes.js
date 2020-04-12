@@ -5,16 +5,7 @@ const routes = {
     projects: {
         label: 'Projects',
         icon: Widgets,
-        route: '/projects',
-        exact: true,
-        components: {
-            mainView: Pages.Projects,
-        },
-    },
-    projects1: {
-        label: 'Projects',
-        icon: Widgets,
-        route: '/projects',
+        path: '/projects',
         exact: true,
         components: {
             mainView: Pages.Projects,
@@ -23,10 +14,10 @@ const routes = {
     projects2: {
         label: 'Projects',
         icon: Widgets,
-        route: '/projects',
+        path: '/projects-2',
         exact: true,
         components: {
-            mainView: Pages.Projects,
+            mainView: Pages.FourOFour,
         },
     },
     default: {

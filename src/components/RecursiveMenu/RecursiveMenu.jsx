@@ -5,7 +5,7 @@ import propTypes from './propTypes';
 import { Container, StyledItem } from './styles';
 
 const RecursiveMenu = (props) => {
-    const { items } = props;
+    const { items, onSelect } = props;
     return (
         <Container>
             <MenuList>
@@ -21,6 +21,7 @@ const RecursiveMenu = (props) => {
                                     className={`styled-item ${activeClass}`}
                                     component="div"
                                     key={index}
+                                    onClick={() => onSelect(item)}
                                 >
                                     <Item isActive={isActive} item={{ ...item, label }} />
                                 </StyledItem>

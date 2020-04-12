@@ -1,9 +1,10 @@
-import * as containers from './containers';
-import * as images from './images';
-import * as volumes from './volumes';
-import * as networks from './networks';
-import * as projects from './projects';
-import * as user from './user';
+import * as containers from './containers/actions';
+import * as images from './images/actions';
+import * as volumes from './volumes/actions';
+import * as networks from './networks/actions';
+import * as projects from './projects/actions';
+import * as user from './user/actions';
+import * as router from './router/actions';
 
 export {
     containers,
@@ -12,4 +13,5 @@ export {
     networks,
     projects,
     user,
+    router,
 };
