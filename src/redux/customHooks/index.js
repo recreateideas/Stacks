@@ -7,5 +7,6 @@ const useSelector = (func, rerenderOnChange = true) => {
 };
 
 export {
+    // eslint-disable-next-line import/prefer-default-export
     useSelector,
 };

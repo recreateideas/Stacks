@@ -1,6 +1,7 @@
 import RecursiveMenu from './RecursiveMenu';
+import Toggle from './Toggle';
 
 export {
-    // eslint-disable-next-line import/prefer-default-export
+    Toggle,
     RecursiveMenu,
 };
