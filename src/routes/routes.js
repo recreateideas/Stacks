@@ -1,5 +1,5 @@
 import {
-    Widgets, SettingsEthernet, Apps, Storage, Settings, Fingerprint, BlurOn, Build,
+    Widgets, SettingsEthernet, Apps, Storage, Settings, Fingerprint, BlurOn, Build, Layers,
 } from '@material-ui/icons';
 import * as Pages from '../Pages';
 
@@ -38,6 +38,15 @@ const routes = {
         exact: true,
         components: {
             mainView: Pages.Images,
+        },
+    },
+    networks: {
+        title: 'Networks',
+        icon: Layers,
+        path: '/networks',
+        exact: true,
+        components: {
+            mainView: Pages.Networks,
         },
     },
     volumes: {

@@ -8,12 +8,14 @@ const Application = styled.div`
 const PageContainer = styled.div`
     width: 100%;
     box-sizing: border-box;
+    overflow: auto;
 `;
 
 const Page = styled.div`
-    width: 100%;
-    padding: 24px 8px 8px 16px;
+    width: fit-content;
+    padding: 16px 16px 16px 16px;
     box-sizing: border-box;
+    white-space: pre-wrap;
 `;
 
 export {

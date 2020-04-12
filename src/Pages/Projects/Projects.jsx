@@ -12,7 +12,7 @@ const Projects = () => {
     // eslint-disable-next-line
     }, []);
     return (
-        <div> Projects {JSON.stringify(projects)}</div>
+        <div> Projects {JSON.stringify(projects, null, 4)}</div>
     );
 };
 

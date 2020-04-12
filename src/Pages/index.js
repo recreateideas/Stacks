@@ -7,6 +7,7 @@ import Remote from './Remote';
 import Volumes from './Volumes';
 import Images from './Images';
 import Utilities from './Utilities';
+import Networks from './Networks';
 
 export {
     Projects,
@@ -18,4 +19,5 @@ export {
     Volumes,
     Images,
     Utilities,
+    Networks,
 };

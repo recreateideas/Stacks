@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import * as containers from './containers/actions';
 import * as images from './images/actions';
 import * as volumes from './volumes/actions';
