@@ -8,6 +8,13 @@ const parseLabels = labels => labels
         };
     }, {});
 
+const reduceContainersToObj = containers => containers
+    .reduce((allContainers, container) => ({
+        ...allContainers,
+        [container.ID]: container,
+    }), {});
+
 module.exports = {
+    reduceContainersToObj,
     parseLabels,
 };

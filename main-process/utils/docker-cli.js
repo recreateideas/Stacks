@@ -1,5 +1,8 @@
 const childProcess = require('child_process');
-const { parseLabels: _parseLabels } = require('./helpers');
+const {
+    parseLabels: _parseLabels,
+    reduceContainersToObj: _reduceContainersToObj,
+} = require('./helpers');
 
 const _runCommandWithOptions = command => (options) => {
     const output = childProcess.execSync(`${command} ${options} --format '{{json .}}'`).toString();
@@ -16,7 +19,7 @@ const listContainers = (all) => {
         parsedContainer.Labels = _parseLabels(container.Labels);
         return parsedContainer;
     });
-    return parsedContainers;
+    return _reduceContainersToObj(parsedContainers);
 };
 
 const listImages = (all) => {
