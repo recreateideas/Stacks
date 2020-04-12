@@ -22,6 +22,7 @@ const Theme = (props) => {
     }, [mode, neutral]);
     useLayoutEffect(() => {
         dispatch(loadThemeMode());
+    // eslint-disable-next-line
     }, []);
     return (
         <>

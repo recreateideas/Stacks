@@ -4,6 +4,9 @@ import Projects from './Projects';
 import Containers from './Containers';
 import Settings from './Settings';
 import Remote from './Remote';
+import Volumes from './Volumes';
+import Images from './Images';
+import Utilities from './Utilities';
 
 export {
     Projects,
@@ -12,4 +15,7 @@ export {
     Settings,
     Remote,
     Dashboard,
+    Volumes,
+    Images,
+    Utilities,
 };

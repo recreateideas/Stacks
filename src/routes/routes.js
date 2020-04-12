@@ -1,5 +1,5 @@
 import {
-    Widgets, SettingsEthernet, Apps, Storage, Settings,
+    Widgets, SettingsEthernet, Apps, Storage, Settings, Wallpaper, BlurOn, Build,
 } from '@material-ui/icons';
 import * as Pages from '../Pages';
 
@@ -31,6 +31,24 @@ const routes = {
             mainView: Pages.Containers,
         },
     },
+    images: {
+        title: 'Images',
+        icon: Wallpaper,
+        path: '/images',
+        exact: true,
+        components: {
+            mainView: Pages.Images,
+        },
+    },
+    volumes: {
+        title: 'Volumes',
+        icon: BlurOn,
+        path: '/volumes',
+        exact: true,
+        components: {
+            mainView: Pages.Volumes,
+        },
+    },
     remote: {
         title: 'Remote',
         icon: SettingsEthernet,
@@ -38,6 +56,15 @@ const routes = {
         exact: true,
         components: {
             mainView: Pages.Remote,
+        },
+    },
+    utilities: {
+        title: 'Utilities',
+        icon: Build,
+        path: '/utilities',
+        exact: true,
+        components: {
+            mainView: Pages.Utilities,
         },
     },
     settings: {
