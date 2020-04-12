@@ -9,7 +9,7 @@ const Settings = () => {
     const dispatch = useDispatch();
     const { user: { setDarkMode } } = actions;
     const { user: userSelectors } = selectors;
-    const isDarkMode = useSelector(userSelectors.isDarkMode);
+    const isDarkMode = !!useSelector(userSelectors.isDarkMode);
     const onDarkModeChange = (event) => {
         const { target: { checked: changedMode } } = event;
         dispatch(setDarkMode(changedMode));

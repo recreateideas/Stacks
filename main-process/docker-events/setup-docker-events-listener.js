@@ -1,7 +1,7 @@
 const childProcess = require('child_process');
 const { EventEmitter } = require('events');
 const eventHandler = require('./event-handler');
-const { inspectContainer, getDockerCompose } = require('../utils');
+const { getDockerCompose } = require('../utils');
 
 const eventEmitter = new EventEmitter();
 

@@ -1,5 +1,5 @@
 import {
-    Widgets, SettingsEthernet, Apps, Storage, Settings, Wallpaper, BlurOn, Build,
+    Widgets, SettingsEthernet, Apps, Storage, Settings, Fingerprint, BlurOn, Build,
 } from '@material-ui/icons';
 import * as Pages from '../Pages';
 
@@ -33,7 +33,7 @@ const routes = {
     },
     images: {
         title: 'Images',
-        icon: Wallpaper,
+        icon: Fingerprint,
         path: '/images',
         exact: true,
         components: {

@@ -1,6 +1,8 @@
 const { ipcMain } = require('electron');
+const { listContainers } = require('../utils');
 
-ipcMain.on('asynchronous-message', (event, args) => {
-    console.log(args);
-    event.sender.send('asynchronous-reply', 'pong');
+ipcMain.on('get-containers', (event) => {
+    const all = true;
+    const containers = listContainers(all);
+    event.sender.send('containers', containers);
 });

@@ -6,7 +6,7 @@ const _runCommandWithOptions = command => (options) => {
     return JSON.parse(`[${joint}]`);
 };
 
-const dockerPs = (all) => {
+const listContainers = (all) => {
     const command = 'docker ps';
     const options = all ? ' -a' : '';
     return _runCommandWithOptions(command)(options);
@@ -22,6 +22,6 @@ const inspectContainer = name => JSON.parse(childProcess.execSync(`docker contai
 
 module.exports = {
     inspectContainer,
-    dockerPs,
+    listContainers,
     listImages,
 };

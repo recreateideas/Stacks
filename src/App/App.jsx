@@ -2,23 +2,20 @@ import { hot } from 'react-hot-loader/root';
 import React, { useEffect } from 'react';
 import { ConnectedRouter as Router } from 'connected-react-router';
 import { Switch, Redirect, Route } from 'react-router-dom';
-import { history } from '../redux';
+import { useDispatch } from 'react-redux';
+import { history, actions } from '../redux';
 import { routes } from '../routes';
 import { AuthenticatedRoute, ErrorBoundary, SideBar } from '../features';
 import { Application, PageContainer, Page } from './styles';
 import Header from './Header';
 
-const { ipcRenderer } = window.require('electron');
 
 const App = () => {
+    const dispatch = useDispatch();
+    const { containers: { getContainers } } = actions;
     useEffect(() => {
-        ipcRenderer.send('asynchronous-message', 'ping');
-        ipcRenderer.on('asynchronous-reply', (event, args) => {
-            const message = `Asynchronous message reply: ${args}`;
-            console.log(message);
-        });
+        dispatch(getContainers());
     }, []);
-    console.log('render');
     return (
         <Application>
             <Router history={history}>
