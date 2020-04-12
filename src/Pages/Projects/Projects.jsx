@@ -5,8 +5,8 @@ import { actions, selectors, useSelector } from '../../redux';
 const Projects = () => {
     const dispatch = useDispatch();
     const { projects: { getProjects } } = actions;
-    const { projects: projectsSelectors } = selectors;
-    const projects = useSelector(projectsSelectors.projects);
+    const { projects: projectSelectors } = selectors;
+    const projects = useSelector(projectSelectors.projects);
     useEffect(() => {
         dispatch(getProjects());
     // eslint-disable-next-line

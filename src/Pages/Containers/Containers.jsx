@@ -5,8 +5,8 @@ import { actions, selectors, useSelector } from '../../redux';
 const Containers = () => {
     const dispatch = useDispatch();
     const { containers: { getContainers } } = actions;
-    const { containers: containersSelectors } = selectors;
-    const containers = useSelector(containersSelectors.containers);
+    const { containers: containerSelectors } = selectors;
+    const containers = useSelector(containerSelectors.containers);
     useEffect(() => {
         dispatch(getContainers());
     // eslint-disable-next-line

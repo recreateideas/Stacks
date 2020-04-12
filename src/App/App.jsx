@@ -15,10 +15,12 @@ const App = () => {
     const {
         containers: { getContainers },
         projects: { getProjects },
+        images: { getImages },
     } = actions;
     useEffect(() => {
         dispatch(getContainers());
         dispatch(getProjects());
+        dispatch(getImages());
     // eslint-disable-next-line
     }, []);
     return (

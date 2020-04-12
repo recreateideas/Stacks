@@ -1,7 +1,7 @@
 const childProcess = require('child_process');
 const {
     parseLabels: _parseLabels,
-    reduceContainersToObj: _reduceContainersToObj,
+    reduceArrayToObj: _reduceArrayToObj,
 } = require('./helpers');
 
 const _runCommandWithOptions = command => (options) => {
@@ -19,13 +19,14 @@ const listContainers = (all) => {
         parsedContainer.Labels = _parseLabels(container.Labels);
         return parsedContainer;
     });
-    return _reduceContainersToObj(parsedContainers);
+    return _reduceArrayToObj(parsedContainers)('ID');
 };
 
 const listImages = (all) => {
     const command = 'docker image ls';
     const options = all ? ' -a' : '';
-    return _runCommandWithOptions(command)(options);
+    const images = _runCommandWithOptions(command)(options);
+    return _reduceArrayToObj(images)('ID');
 };
 
 const inspectContainer = name => JSON.parse(childProcess.execSync(`docker container inspect ${name}`).toString());

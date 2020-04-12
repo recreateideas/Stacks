@@ -9,3 +9,5 @@ eventEmitter.on('new-docker-events', events.processEventsList);
 ipcMain.on('get-containers', controllers.getContainers);
 
 ipcMain.on('get-projects', controllers.getProjects);
+
+ipcMain.on('get-images', controllers.getImages);
