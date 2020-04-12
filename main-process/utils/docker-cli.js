@@ -1,4 +1,5 @@
 const childProcess = require('child_process');
+const { parseLabels: _parseLabels } = require('./helpers');
 
 const _runCommandWithOptions = command => (options) => {
     const output = childProcess.execSync(`${command} ${options} --format '{{json .}}'`).toString();
@@ -9,7 +10,13 @@ const _runCommandWithOptions = command => (options) => {
 const listContainers = (all) => {
     const command = 'docker ps';
     const options = all ? ' -a' : '';
-    return _runCommandWithOptions(command)(options);
+    const containers = _runCommandWithOptions(command)(options);
+    const parsedContainers = containers.map((container) => {
+        const parsedContainer = container;
+        parsedContainer.Labels = _parseLabels(container.Labels);
+        return parsedContainer;
+    });
+    return parsedContainers;
 };
 
 const listImages = (all) => {

@@ -7,7 +7,7 @@ const eventEmitter = new EventEmitter();
 
 const { stdout: dockerEvents } = childProcess.spawn('docker', ['events', '--format', '{{json .}}']);
 
-const dockerComposeYaml = getDockerCompose('/Users/claudio/claud.io/docker/docker-compose.dev.yml', 'utf8');
+const dockerComposeYaml = getDockerCompose(['/Users/claudio/claud.io/docker/docker-compose.dev.yml'], 'utf8');
 
 console.log(dockerComposeYaml);
 // console.log(inspectContainer('db')[0].Config.Labels['com.docker.compose.project.config_files']);

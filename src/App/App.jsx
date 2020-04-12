@@ -12,9 +12,17 @@ import Header from './Header';
 
 const App = () => {
     const dispatch = useDispatch();
-    const { containers: { getContainers } } = actions;
+    const {
+        containers: { getContainers },
+        projects: { getProjects },
+    } = actions;
     useEffect(() => {
         dispatch(getContainers());
+    }, []);
+    // const { containers: containersSelectors } = selectors;
+    // const containers = useSelector(containersSelectors.containers);
+    useEffect(() => {
+        dispatch(getProjects());
     }, []);
     return (
         <Application>

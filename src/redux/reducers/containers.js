@@ -1,5 +1,6 @@
-import initialState from '../store/initialState';
+// eslint-disable-next-line import/no-cycle
 import { types } from '../actions/containers';
+import initialState from '../store/initialState';
 
 const CONTAINERS = (oldState = initialState.CONTAINERS, action) => {
     const state = JSON.parse(JSON.stringify(oldState));
