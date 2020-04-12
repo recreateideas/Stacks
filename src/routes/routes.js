@@ -1,5 +1,5 @@
 import {
-    Widgets, Call, Apps, BusinessCenter, Settings,
+    Widgets, SettingsEthernet, Apps, Storage, Settings,
 } from '@material-ui/icons';
 import * as Pages from '../Pages';
 
@@ -15,7 +15,7 @@ const routes = {
     },
     projects: {
         title: 'Projects',
-        icon: BusinessCenter,
+        icon: Storage,
         path: '/projects',
         exact: true,
         components: {
@@ -33,7 +33,7 @@ const routes = {
     },
     remote: {
         title: 'Remote',
-        icon: Call,
+        icon: SettingsEthernet,
         path: '/remote',
         exact: true,
         components: {
@@ -49,7 +49,7 @@ const routes = {
             mainView: Pages.Settings,
         },
     },
-    default: {
+    fourOFour: {
         title: 'Where am I ??',
         path: '/404',
         exact: true,

@@ -6,7 +6,7 @@ import propTypes from './propTypes';
 
 const Theme = (props) => {
     const { children } = props;
-    const mode = 'light';
+    const mode = 'dark';
     const isDark = mode === 'dark';
     const theme = themes[mode];
     const {

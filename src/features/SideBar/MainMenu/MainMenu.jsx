@@ -7,7 +7,7 @@ import { routes } from '../../../routes';
 
 const MainMenu = () => {
     const dispatch = useDispatch();
-    const { default: fourOfour, ...exactRoutes } = routes;
+    const { fourOFour, settings, ...menuRoutes } = routes;
     const { router: { navigateTo } } = actions;
     const { location: { pathname } } = window;
     const onSelect = (item) => {
@@ -18,7 +18,7 @@ const MainMenu = () => {
     return (
         <Container>
             <RecursiveMenu
-                items={exactRoutes}
+                items={menuRoutes}
                 onSelect={onSelect}
                 setIsActive={setIsActive}
             />

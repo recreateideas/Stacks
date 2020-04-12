@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from './styles';
 import SideBarHeader from './SideBarHeader';
 import MainMenu from './MainMenu';
+import Settings from './Settings';
 
 const SideBar = () => (
     <Container
@@ -9,6 +10,7 @@ const SideBar = () => (
     >
         <SideBarHeader />
         <MainMenu />
+        <Settings />
     </Container>
 );
 
