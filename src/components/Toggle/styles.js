@@ -12,7 +12,7 @@ const Container = styled.div`
     .MuiSwitch-colorSecondary.Mui-checked {
         color: ${props => props.theme.palette.primary['400']};
     }
-    .MuiSwitch-colorSecondary.Mui-checked:hover {
+    .MuiSwitch-colorSecondary:hover {
         background-color: unset !important;
     }
 `;

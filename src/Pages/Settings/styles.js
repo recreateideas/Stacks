@@ -9,6 +9,10 @@ const Container = styled.div`
             &.checked-icon {
                 transform: rotate(155deg);
             }
+            &.unchecked-icon,
+            &.unchecked-icon path {
+                color: ${props => props.theme.palette.accents.yellow['400']}
+            }
         }
     }
     .MuiSwitch-switchBase.Mui-checked {
