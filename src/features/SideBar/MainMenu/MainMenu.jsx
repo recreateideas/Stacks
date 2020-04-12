@@ -9,13 +9,19 @@ const MainMenu = () => {
     const dispatch = useDispatch();
     const { default: fourOfour, ...exactRoutes } = routes;
     const { router: { navigateTo } } = actions;
+    const { location: { pathname } } = window;
     const onSelect = (item) => {
         const { path } = item;
         dispatch(navigateTo(path));
     };
+    const setIsActive = item => item.path === pathname;
     return (
         <Container>
-            <RecursiveMenu items={exactRoutes} onSelect={onSelect} />
+            <RecursiveMenu
+                items={exactRoutes}
+                onSelect={onSelect}
+                setIsActive={setIsActive}
+            />
         </Container>
     );
 };

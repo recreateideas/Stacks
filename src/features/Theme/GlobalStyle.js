@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     * {
         font-family: Roboto;
         font-weight: normal;
-        font-size: 1em;
+        font-size: 14px;
         color: ${props => props.theme.palette.neutral['700']};
     }
 `;

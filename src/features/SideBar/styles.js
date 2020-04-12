@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Container = styled.div`
     padding: 24px 0px 24px 0px;
     height: 100%;
-    width: 25%;
+    width: 200px;
     min-width: 200px;
     box-sizing: border-box; 
     border-right: solid 1px ${props => props.theme.palette.neutral['200']};

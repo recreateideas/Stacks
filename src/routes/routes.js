@@ -1,28 +1,57 @@
-import { Widgets } from '@material-ui/icons';
+import {
+    Widgets, Call, Apps, BusinessCenter, Settings,
+} from '@material-ui/icons';
 import * as Pages from '../Pages';
 
 const routes = {
-    projects: {
-        label: 'Projects',
+    dashboard: {
+        title: 'Dashboard',
         icon: Widgets,
+        path: '/dashboard',
+        exact: true,
+        components: {
+            mainView: Pages.Dashboard,
+        },
+    },
+    projects: {
+        title: 'Projects',
+        icon: BusinessCenter,
         path: '/projects',
         exact: true,
         components: {
             mainView: Pages.Projects,
         },
     },
-    projects2: {
-        label: 'Projects',
-        icon: Widgets,
-        path: '/projects-2',
+    containers: {
+        title: 'Containers',
+        icon: Apps,
+        path: '/containers',
         exact: true,
         components: {
-            mainView: Pages.FourOFour,
+            mainView: Pages.Containers,
+        },
+    },
+    remote: {
+        title: 'Remote',
+        icon: Call,
+        path: '/remote',
+        exact: true,
+        components: {
+            mainView: Pages.Remote,
+        },
+    },
+    settings: {
+        title: 'Settings',
+        icon: Settings,
+        path: '/settings',
+        exact: true,
+        components: {
+            mainView: Pages.Settings,
         },
     },
     default: {
         title: 'Where am I ??',
-        path: '',
+        path: '/404',
         exact: true,
         components: {
             mainView: Pages.FourOFour,

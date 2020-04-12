@@ -4,7 +4,7 @@ import { Container, IconWrap, LabelWrap } from './styles';
 
 const Item = (props) => {
     const { item, isActive } = props;
-    const { icon: Icon, label } = item;
+    const { icon: Icon, title } = item;
     return (
         <Container className="item-inner">
             {Icon && (
@@ -13,7 +13,7 @@ const Item = (props) => {
                 </IconWrap>
             )}
             <LabelWrap isActive={isActive}>
-                {label}
+                {title}
             </LabelWrap>
         </Container>
     );
