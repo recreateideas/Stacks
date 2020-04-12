@@ -8,7 +8,7 @@ const parseLabels = labels => labels
         };
     }, {});
 
-const reduceArrayToObj = array => key => array
+const reduceArrayToObj = array => ({ key }) => array
     .reduce((allContainers, container) => ({
         ...allContainers,
         [container[key]]: container,

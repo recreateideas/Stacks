@@ -21,8 +21,20 @@ const getImages = (event) => {
     event.sender.send('images', images);
 };
 
+const getVolumes = (event) => {
+    const volumes = docker.listVolumes();
+    event.sender.send('volumes', volumes);
+};
+
+const getNetworks = (event) => {
+    const networks = docker.listNetworks();
+    event.sender.send('networks', networks);
+};
+
 module.exports = {
     getContainers,
     getProjects,
     getImages,
+    getVolumes,
+    getNetworks,
 };

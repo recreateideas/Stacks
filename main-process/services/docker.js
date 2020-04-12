@@ -4,7 +4,7 @@ const {
     reduceArrayToObj: _reduceArrayToObj,
 } = require('./helpers');
 
-const _runCommandWithOptions = command => (options) => {
+const _runCommandWithOptions = command => (options = '') => {
     const output = childProcess.execSync(`${command} ${options} --format '{{json .}}'`).toString();
     const joint = output.replace(/\n/gm, ',').replace(/,$/, '');
     return JSON.parse(`[${joint}]`);
@@ -19,14 +19,26 @@ const listContainers = (all) => {
         parsedContainer.Labels = _parseLabels(container.Labels);
         return parsedContainer;
     });
-    return _reduceArrayToObj(parsedContainers)('ID');
+    return _reduceArrayToObj(parsedContainers)({ key: 'ID' });
 };
 
 const listImages = (all) => {
     const command = 'docker image ls';
     const options = all ? ' -a' : '';
     const images = _runCommandWithOptions(command)(options);
-    return _reduceArrayToObj(images)('ID');
+    return _reduceArrayToObj(images)({ key: 'ID' });
+};
+
+const listVolumes = () => {
+    const command = 'docker volume ls';
+    const images = _runCommandWithOptions(command)();
+    return _reduceArrayToObj(images)({ key: 'Name' });
+};
+
+const listNetworks = () => {
+    const command = 'docker network ls';
+    const networks = _runCommandWithOptions(command)();
+    return _reduceArrayToObj(networks)({ key: 'ID' });
 };
 
 const inspectContainer = name => JSON.parse(childProcess.execSync(`docker container inspect ${name}`).toString());
@@ -38,4 +50,6 @@ module.exports = {
     listContainers,
     listImages,
     listenToEvents,
+    listVolumes,
+    listNetworks,
 };

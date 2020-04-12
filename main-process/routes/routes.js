@@ -11,3 +11,7 @@ ipcMain.on('get-containers', controllers.getContainers);
 ipcMain.on('get-projects', controllers.getProjects);
 
 ipcMain.on('get-images', controllers.getImages);
+
+ipcMain.on('get-volumes', controllers.getVolumes);
+
+ipcMain.on('get-networks', controllers.getNetworks);
