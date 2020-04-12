@@ -11,6 +11,24 @@ const routes = {
             mainView: Pages.Projects,
         },
     },
+    projects1: {
+        label: 'Projects',
+        icon: Widgets,
+        route: '/projects',
+        exact: true,
+        components: {
+            mainView: Pages.Projects,
+        },
+    },
+    projects2: {
+        label: 'Projects',
+        icon: Widgets,
+        route: '/projects',
+        exact: true,
+        components: {
+            mainView: Pages.Projects,
+        },
+    },
     default: {
         title: 'Where am I ??',
         path: '',

@@ -9,7 +9,6 @@ const SideBar = () => (
     >
         <SideBarHeader />
         <MainMenu />
-        <span>MainMenu</span>
     </Container>
 );
 

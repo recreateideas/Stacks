@@ -1,31 +1,34 @@
 import React from 'react';
-import { MenuList, MenuItem } from '@material-ui/core';
+import { MenuList } from '@material-ui/core';
+import Item from './Item';
 import propTypes from './propTypes';
-// import Item from './Item';
+import { Container, StyledItem } from './styles';
 
 const RecursiveMenu = (props) => {
     const { items } = props;
     return (
-        <MenuList>
-            {
-                Object
-                    .keys(items)
-                    .map((label, index) => {
-                        const item = items[label];
-                        const { icon } = item;
-                        console.log(icon);
-                        return (
-                            <MenuItem
-                                component="div"
-                                key={index}
-                                item={item}
-                                index={index}
-                            >{label}
-                            </MenuItem>
-                        );
-                    })
-            }
-        </MenuList>
+        <Container>
+            <MenuList>
+                {
+                    Object
+                        .keys(items)
+                        .map((label, index) => {
+                            const item = items[label];
+                            const isActive = index % 2;
+                            const activeClass = isActive ? 'active' : '';
+                            return (
+                                <StyledItem
+                                    className={`styled-item ${activeClass}`}
+                                    component="div"
+                                    key={index}
+                                >
+                                    <Item isActive={isActive} item={{ ...item, label }} />
+                                </StyledItem>
+                            );
+                        })
+                }
+            </MenuList>
+        </Container>
     );
 };
 
