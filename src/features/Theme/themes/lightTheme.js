@@ -9,6 +9,7 @@ const palette = {
         700: '#1D252D',
     },
     primary: {
+        zero: '#FFFFFF',
         100: '#EBF7FE',
         200: '#9ACFF1',
         300: '#4B99CF',
@@ -16,6 +17,7 @@ const palette = {
         500: '#005F95',
         600: '#064164',
         700: '#183649',
+        800: '#0b1a23',
     },
     accents: {
         highlight: {

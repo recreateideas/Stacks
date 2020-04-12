@@ -14,8 +14,10 @@ const IconWrap = styled.div`
     path {
         color: ${(props) => {
         const { isActive, theme: { palette, isDark } } = props;
-        // return palette.primary['100'];
-        return isDark && isActive ? palette.primary['700'] : palette.primary['100'];
+        const activeColor = isDark ? palette.primary['900'] : palette.primary.zero;
+        const inactiveColor = isDark ? palette.primary['700'] : palette.primary['100'];
+        return isActive ? activeColor : inactiveColor;
+        // return isDark && isActive ? palette.primary['700'] : palette.primary['100'];
     }};
     }
 `;
@@ -27,8 +29,9 @@ const LabelWrap = styled.div`
     margin-left: 8px;
     color: ${(props) => {
         const { isActive, theme: { palette, isDark } } = props;
-        // return palette.primary['100'];
-        return isDark && isActive ? palette.primary['700'] : palette.primary['100'];
+        const activeColor = isDark ? palette.primary['900'] : palette.primary.zero;
+        const inactiveColor = isDark ? palette.primary['700'] : palette.primary['100'];
+        return isActive ? activeColor : inactiveColor;
     }};
 `;
 
