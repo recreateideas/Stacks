@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { AddCircleOutline } from '@material-ui/icons';
 import { actions, selectors, useSelector } from '../../redux';
-import { Container, Slots } from './styles';
+import { Container, AddProject, Slots } from './styles';
 import { ProjectSlot } from '../../features';
 
 const Projects = () => {
@@ -27,8 +28,12 @@ const Projects = () => {
                                 yaml={project}
                             />
                         );
-                    })}
+                    })
+                }
             </Slots>
+            <AddProject>
+                <AddCircleOutline />
+            </AddProject>
         </Container>
     );
 };
