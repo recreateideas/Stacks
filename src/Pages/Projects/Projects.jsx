@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { actions, selectors, useSelector } from '../../redux';
+import { Container } from './styles';
 
 const Projects = () => {
     const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const Projects = () => {
     // eslint-disable-next-line
     }, []);
     return (
-        <div> Projects {JSON.stringify(projects, null, 4)}</div>
+        <Container> Projects {JSON.stringify(projects, null, 4)}</Container>
     );
 };
 

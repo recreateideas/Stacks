@@ -1,7 +1,8 @@
 import React from 'react';
+import { Container } from './styles';
 
 const Remote = () => (
-    <div> Remote </div>
+    <Container> Remote </Container>
 );
 
 export default Remote;

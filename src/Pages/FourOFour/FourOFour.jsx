@@ -1,7 +1,8 @@
 import React from 'react';
+import { Container } from './styles';
 
 const FourOFour = () => (
-    <div> 404 </div>
+    <Container> 404 </Container>
 );
 
 export default FourOFour;

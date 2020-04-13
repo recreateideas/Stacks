@@ -5,7 +5,7 @@ const Container = styled.div`
     flex-direction: row;
     justify-content: space-between;
     box-sizing: border-box;
-    border-bottom: solid 1px ${props => props.theme.palette.neutral['200']};
+    border-bottom: solid 1px ${props => props.theme.palette.neutral['300']};
 `;
 
 const Title = styled.div`

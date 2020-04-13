@@ -1,7 +1,8 @@
 import React from 'react';
+import { Container } from './styles';
 
 const Utilities = () => (
-    <div> Utilities </div>
+    <Container> Utilities </Container>
 );
 
 export default Utilities;

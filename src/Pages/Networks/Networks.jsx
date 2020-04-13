@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { actions, selectors, useSelector } from '../../redux';
+import { Container } from './styles';
 
 const Networks = () => {
     const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const Networks = () => {
     // eslint-disable-next-line
     }, []);
     return (
-        <div> Networks {JSON.stringify(networks, null, 4)}</div>
+        <Container> Networks {JSON.stringify(networks, null, 4)}</Container>
     );
 };
 
