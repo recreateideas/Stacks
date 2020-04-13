@@ -1,16 +1,16 @@
 import { hot } from 'react-hot-loader/root';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ConnectedRouter as Router } from 'connected-react-router';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { history, actions } from '../redux';
 import { routes } from '../routes';
-import { AuthenticatedRoute, ErrorBoundary, SideBar } from '../features';
+import {
+    AuthenticatedRoute, Header, ErrorBoundary, SideBar,
+} from '../features';
 import { Application, PageContainer, PageContent } from './styles';
-import Header from './Header';
 
-
-const App = () => {
+const useGetAllData = () => {
     const dispatch = useDispatch();
     const {
         containers: { getContainers },
@@ -19,14 +19,15 @@ const App = () => {
         volumes: { getVolumes },
         networks: { getNetworks },
     } = actions;
-    useEffect(() => {
-        dispatch(getContainers());
-        dispatch(getProjects());
-        dispatch(getImages());
-        dispatch(getVolumes());
-        dispatch(getNetworks());
-    // eslint-disable-next-line
-    }, []);
+    dispatch(getContainers());
+    dispatch(getProjects());
+    dispatch(getImages());
+    dispatch(getVolumes());
+    dispatch(getNetworks());
+};
+
+const App = () => {
+    useGetAllData();
     return (
         <Application>
             <Router history={history}>

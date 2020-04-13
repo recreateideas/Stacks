@@ -3,6 +3,7 @@ import AuthenticatedRoute from './AuthenticatedRoute';
 import SideBar from './SideBar';
 import Theme from './Theme';
 import DarkModeSwitch from './DarkModeSwitch';
+import Header from './Header';
 
 export {
     ErrorBoundary,
@@ -10,4 +11,5 @@ export {
     SideBar,
     Theme,
     DarkModeSwitch,
+    Header,
 };
