@@ -11,7 +11,7 @@ const getProjects = (event) => {
     const containers = docker.listContainers(all);
     const projectsPaths = Object.keys(containers).map(id => containers[id].Labels['com.docker.compose.project.config_files']);
     const uniquePaths = projectsPaths.filter((path, index) => projectsPaths.indexOf(path) === index);
-    const projects = compose.getYamlAsJSON(uniquePaths);
+    const projects = compose.getYamlAsObject(uniquePaths);
     event.sender.send('projects', projects);
 };
 
