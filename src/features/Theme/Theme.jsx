@@ -20,13 +20,14 @@ const Theme = (props) => {
     useLayoutEffect(() => {
         document.body.style.backgroundColor = neutral['100'];
     }, [mode, neutral]);
+    const fixedToLight = value => (isDark ? 800 - value : value);
     useLayoutEffect(() => {
         dispatch(loadThemeMode());
     // eslint-disable-next-line
     }, []);
     return (
         <>
-            <ThemeProvider theme={{ ...theme, isDark }}>
+            <ThemeProvider theme={{ ...theme, isDark, fixedToLight }}>
                 {children}
             </ThemeProvider>
             <GlobalStyle theme={{ ...theme }} />

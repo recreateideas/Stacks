@@ -7,7 +7,9 @@ import { routes } from '../../../routes';
 
 const MainMenu = () => {
     const dispatch = useDispatch();
-    const { fourOFour, settings, ...menuRoutes } = routes;
+    const {
+        fourOFour, projectEditYaml, settings, ...menuRoutes
+    } = routes;
     const { router: { navigateTo } } = actions;
     const { location: { pathname } } = window;
     const onSelect = (item) => {

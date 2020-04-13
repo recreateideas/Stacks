@@ -22,6 +22,14 @@ const routes = {
             mainView: Pages.Projects,
         },
     },
+    projectEditYaml: {
+        title: 'Project - Edit Yaml',
+        path: '/projects/edit-yaml',
+        exact: true,
+        components: {
+            mainView: Pages.ProjectEditYaml,
+        },
+    },
     containers: {
         title: 'Containers',
         icon: Apps,

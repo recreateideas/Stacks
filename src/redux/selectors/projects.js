@@ -1,6 +1,7 @@
 const projects = state => state.appState.projects;
+const projectByPath = path => state => state.appState.projects[path];
 
 export {
-    // eslint-disable-next-line import/prefer-default-export
     projects,
+    projectByPath,
 };

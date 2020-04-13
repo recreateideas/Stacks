@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
         font-weight: normal;
         font-size: 14px;
         color: ${props => props.theme.palette.neutral['700']};
+        letter-spacing: .3px;
     }
     ::-webkit-scrollbar {
             width: 7px;

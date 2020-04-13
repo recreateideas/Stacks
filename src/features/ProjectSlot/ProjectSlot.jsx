@@ -8,7 +8,7 @@ import { StatusIndicator } from '../../components';
 import DetailsDrawer from './DetailsDrawer';
 
 const ProjectSlot = (props) => {
-    const { path, yaml } = props;
+    const { onYamlClick, path, yaml } = props;
     const [isExpanded, setIsExpanded] = useState(false);
     const { length: containersNo } = Object.keys(yaml.services);
     const displayPath = `${path.replace(/^\//, '')}/`;
@@ -16,6 +16,9 @@ const ProjectSlot = (props) => {
         switch (action) {
             case 'expand':
                 setIsExpanded(!isExpanded);
+                break;
+            case 'yaml':
+                onYamlClick();
                 break;
             default: break;
         }

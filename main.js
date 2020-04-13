@@ -10,8 +10,7 @@ const {
 } = require('electron-devtools-installer');
 const contextMenu = require('electron-context-menu');
 const path = require('path');
-const devtron = require('devtron');
-const { app, BrowserWindow } = require('electron');
+const { app, ipcMain, BrowserWindow } = require('electron');
 const url = require('url');
 
 const debug = /--debug/.test(process.argv[2]);
@@ -60,6 +59,7 @@ const initialize = () => {
             webPreferences: {
                 nodeIntegration: true,
             },
+            show: false,
         };
 
         mainWindow = new BrowserWindow(windowOptions);
@@ -68,14 +68,16 @@ const initialize = () => {
             ? `http://localhost:${process.env.PORT}`
             : url.format({
                 pathname: path.join(__dirname, './build/index.html'),
-                protocol: 'file:',
+                protocol: 'file',
                 slashes: true,
             });
         mainWindow.loadURL(startUrl);
+        mainWindow.webContents.openDevTools();
         if (debug) {
-            mainWindow.webContents.openDevTools();
+            process.env.NODE_ENV = 'development';
+            // mainWindow.webContents.openDevTools();
             mainWindow.maximize();
-            devtron.install();
+            require('devtron').install();
             addReactReduxDevTools();
             contextMenu({
                 labels: {
@@ -86,11 +88,45 @@ const initialize = () => {
                 },
             });
         }
-
+        mainWindow.once('ready-to-show', () => {
+            mainWindow.show();
+        });
         mainWindow.on('closed', () => {
             mainWindow = null;
         });
     };
+
+    const openViewInNewWindow = (event, view) => {
+        const newWindow = new BrowserWindow({
+            name: `popup-view-${view}`,
+            width: 500,
+            height: 700,
+            webPreferences: {
+                nodeIntegration: true,
+            },
+            show: false,
+        });
+        newWindow.webContents.openDevTools();
+        const isDev = process.env.NODE_ENV === 'development';
+        if (isDev) {
+            // newWindow.webContents.openDevTools();
+            require('devtron').install();
+            addReactReduxDevTools();
+        }
+        const viewUrl = isDev && process.env.PORT
+            ? `http://localhost:${process.env.PORT}?${view}`
+            : url.format({
+                pathname: path.join(__dirname, `./build/index.html?${view}`),
+                protocol: 'file',
+                slashes: true,
+            });
+        newWindow.loadURL(decodeURIComponent(viewUrl));
+        newWindow.once('ready-to-show', () => {
+            newWindow.show();
+        });
+    };
+
+    ipcMain.on('new-view', openViewInNewWindow);
 
     app.on('ready', () => {
         createWindow();

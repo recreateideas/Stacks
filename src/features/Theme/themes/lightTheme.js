@@ -69,6 +69,14 @@ const fonts = {
         fontSize: 20,
         color: palette.primary['100'],
     },
+    code: {
+        fontFamily: 'Monaco, Menlo, "Ubuntu Mono", Consolas, source-code-pro, monospace',
+        // color: palette.primary['700'],
+    },
+    'code-negative': {
+        fontFamily: 'Monaco, Menlo, "Ubuntu Mono", Consolas, source-code-pro, monospace',
+        // color: palette.primary['100'],
+    },
 };
 
 const lightTheme = {

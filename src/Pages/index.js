@@ -8,6 +8,7 @@ import Volumes from './Volumes';
 import Images from './Images';
 import Utilities from './Utilities';
 import Networks from './Networks';
+import ProjectEditYaml from './ProjectEditYaml';
 
 export {
     Projects,
@@ -20,4 +21,5 @@ export {
     Images,
     Utilities,
     Networks,
+    ProjectEditYaml,
 };

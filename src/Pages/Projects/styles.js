@@ -5,7 +5,7 @@ const Container = styled.div`
 `;
 
 const Slots = styled.div`
-    margin: 10% 20% 0 20%;
+    margin: 10% 15% 0 15%;
 `;
 
 const AddProject = styled.div`
@@ -14,7 +14,7 @@ const AddProject = styled.div`
     justify-content: center;
     margin-top: 16px;
     & svg, & svg * {
-        color: ${props => props.theme.palette.primary['400']};
+        color: ${props => props.theme.palette.primary['500']};
         font-size: 25px;
     }
 `;
