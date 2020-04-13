@@ -1,30 +1,11 @@
 import React from 'react';
-import { Brightness2, WbSunny } from '@material-ui/icons';
-import { useDispatch } from 'react-redux';
-import { actions, selectors, useSelector } from '../../redux';
 import { Container } from './styles';
-import { Toggle } from '../../components';
+import { DarkModeSwitch } from '../../features';
 
-const Settings = () => {
-    const dispatch = useDispatch();
-    const { user: { setDarkMode } } = actions;
-    const { user: userSelectors } = selectors;
-    const isDarkMode = !!useSelector(userSelectors.isDarkMode);
-    const onDarkModeChange = (event) => {
-        const { target: { checked: changedMode } } = event;
-        dispatch(setDarkMode(changedMode));
-    };
-    return (
-        <Container>
-            <Toggle
-                icon={<WbSunny className="unchecked-icon" />}
-                checkedIcon={<Brightness2 className="checked-icon" />}
-                disableRipple
-                onChange={onDarkModeChange}
-                checked={isDarkMode}
-            />
-        </Container>
-    );
-};
+const Settings = () => (
+    <Container className="settings-page">
+        <DarkModeSwitch />
+    </Container>
+);
 
 export default Settings;
