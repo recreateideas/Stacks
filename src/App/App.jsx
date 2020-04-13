@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { history, actions } from '../redux';
 import { routes } from '../routes';
 import { AuthenticatedRoute, ErrorBoundary, SideBar } from '../features';
-import { Application, PageContainer, Page } from './styles';
+import { Application, PageContainer, PageContent } from './styles';
 import Header from './Header';
 
 
@@ -59,9 +59,9 @@ const App = () => {
                                         <ErrorBoundary>
                                             <PageContainer>
                                                 <Header title={title} />
-                                                <Page className="page-content">
+                                                <PageContent className="page-content">
                                                     <Component {...props} />
-                                                </Page>
+                                                </PageContent>
                                             </PageContainer>
                                         </ErrorBoundary>
                                     )}
