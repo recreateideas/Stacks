@@ -72,10 +72,9 @@ const initialize = () => {
                 slashes: true,
             });
         mainWindow.loadURL(startUrl);
-        mainWindow.webContents.openDevTools();
         if (debug) {
             process.env.NODE_ENV = 'development';
-            // mainWindow.webContents.openDevTools();
+            mainWindow.webContents.openDevTools();
             mainWindow.maximize();
             require('devtron').install();
             addReactReduxDevTools();
@@ -106,10 +105,9 @@ const initialize = () => {
             },
             show: false,
         });
-        newWindow.webContents.openDevTools();
         const isDev = process.env.NODE_ENV === 'development';
         if (isDev) {
-            // newWindow.webContents.openDevTools();
+            newWindow.webContents.openDevTools();
             require('devtron').install();
             addReactReduxDevTools();
         }
