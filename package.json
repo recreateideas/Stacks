@@ -53,6 +53,7 @@
     "customize-cra": "0.9.1",
     "electron-context-menu": "0.16.0",
     "electron-log": "4.1.1",
+    "hex-rgba": "1.0.2",
     "history": "4.10.1",
     "js-yaml": "3.13.1",
     "lodash.isequal": "4.5.0",

@@ -1,5 +1,5 @@
 import {
-    Widgets, SettingsEthernet, Apps, Storage, Settings, Fingerprint, BlurOn, Build, Layers,
+    Widgets, SettingsEthernet, Apps, Storage, Settings, Fingerprint, BlurOn, Layers, ControlCamera,
 } from '@material-ui/icons';
 import * as Pages from '../Pages';
 
@@ -69,7 +69,7 @@ const routes = {
     },
     utilities: {
         title: 'Utilities',
-        icon: Build,
+        icon: ControlCamera,
         path: '/utilities',
         exact: true,
         components: {

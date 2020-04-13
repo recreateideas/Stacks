@@ -6,7 +6,7 @@ const Container = styled.div`
         opacity: 1;
     }
     .MuiSwitch-track {
-        background-color: ${props => props.theme.palette.neutral['200']};
+        background-color: ${props => props.theme.palette.neutral['400']};
         opacity: 1;
     }
     .MuiSwitch-colorSecondary.Mui-checked {

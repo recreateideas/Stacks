@@ -11,7 +11,7 @@ const IconWrap = styled.div`
     flex-direction: column;
     justify-content: center;
     /* margin-left: 8px; */
-    path {
+    * {
         color: ${(props) => {
         const { isActive, theme: { palette, isDark } } = props;
         const activeColor = isDark ? palette.primary['900'] : palette.primary.zero;

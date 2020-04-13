@@ -17,8 +17,9 @@ const PageContent = styled.div`
     box-sizing: border-box;
     white-space: pre-wrap;
     overflow-y: auto;
-    max-height: calc(100% - 56px); /* 56px = header height */
-    min-height: calc(100% - 56px); 
+    max-height: calc(100% - 58px); /* 56px header height + 2px buffer*/
+    min-height: calc(100% - 58px);
+    background-color: ${props => props.theme.palette.neutral['200']}
 `;
 
 export {
