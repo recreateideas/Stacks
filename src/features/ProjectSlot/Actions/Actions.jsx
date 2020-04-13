@@ -13,13 +13,13 @@ const Actions = (props) => {
     const ExpandIcon = isExpanded ? ExpandMore : ExpandLess;
     return (
         <Container className="actions">
-            <Action className="yaml">
+            <Action className="yaml with-hover">
                 <Code onClick={() => onClick('yaml')} />
             </Action>
-            <Action>
+            <Action className="with-hover">
                 <PlayCircleOutline onClick={() => onClick('start')} />
             </Action>
-            <Action>
+            <Action className="with-hover">
                 <Eject onClick={() => onClick('stop')} />
             </Action>
             <Action className="expand">

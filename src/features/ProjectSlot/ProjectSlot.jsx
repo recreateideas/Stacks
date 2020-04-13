@@ -19,7 +19,6 @@ const ProjectSlot = (props) => {
                 break;
             default: break;
         }
-        console.log(action);
     };
     const isActive = true;
     return (
