@@ -11,8 +11,8 @@ const Settings = () => {
     const { settings: { path: settingsPath } } = routes;
     const onClick = () => dispatch(navigateTo(settingsPath));
     return (
-        <Container onClick={onClick}>
-            <SettingsIcon />
+        <Container>
+            <SettingsIcon onClick={onClick} />
         </Container>
     );
 };

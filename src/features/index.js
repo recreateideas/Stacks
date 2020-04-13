@@ -4,6 +4,7 @@ import SideBar from './SideBar';
 import Theme from './Theme';
 import DarkModeSwitch from './DarkModeSwitch';
 import Header from './Header';
+import ProjectSlot from './ProjectSlot';
 
 export {
     ErrorBoundary,
@@ -12,4 +13,5 @@ export {
     Theme,
     DarkModeSwitch,
     Header,
+    ProjectSlot,
 };

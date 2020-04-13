@@ -1,14 +1,9 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
- 
-`;
-
-const Slots = styled.div`
-    margin: 10% 20% 0 20%;
 `;
 
 export {
+    // eslint-disable-next-line import/prefer-default-export
     Container,
-    Slots,
 };
