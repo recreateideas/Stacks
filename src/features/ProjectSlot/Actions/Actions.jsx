@@ -6,7 +6,7 @@ import propTypes from './propTypes';
 import { Container, Action } from './styles';
 
 const Actions = (props) => {
-    const { onSelect, isExpanded } = props;
+    const { onSelect, isExpanded, statusActive } = props;
     const onClick = (action) => {
         onSelect(action);
     };
@@ -16,13 +16,13 @@ const Actions = (props) => {
             <Action className="yaml with-hover">
                 <Code onClick={() => onClick('yaml')} />
             </Action>
-            <Action className="with-hover">
-                <PlayCircleOutline onClick={() => onClick('start')} />
+            <Action className="start with-hover" statusActive={statusActive}>
+                <PlayCircleOutline onClick={() => !statusActive && onClick('start')} />
             </Action>
-            <Action className="with-hover">
-                <Eject onClick={() => onClick('stop')} />
+            <Action className="stop with-hover" statusActive={statusActive}>
+                <Eject onClick={() => statusActive && onClick('stop')} />
             </Action>
-            <Action className="expand">
+            <Action className="expand" statusActive={statusActive}>
                 <ExpandIcon onClick={() => onClick('expand')} />
             </Action>
         </Container>

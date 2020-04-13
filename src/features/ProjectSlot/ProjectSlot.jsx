@@ -20,13 +20,13 @@ const ProjectSlot = (props) => {
             default: break;
         }
     };
-    const isActive = true;
+    const statusActive = true;
     return (
         <>
             <Container className="project-slot">
                 <Group className="left-group">
                     <Div className="status">
-                        <StatusIndicator isActive={isActive} />
+                        <StatusIndicator isActive={statusActive} />
                     </Div>
                     <Path>
                         {displayPath}
@@ -36,7 +36,11 @@ const ProjectSlot = (props) => {
                     {containersNo}
                 </Div>
                 <Div>
-                    <Actions onSelect={handleAction} isExpanded={isExpanded} />
+                    <Actions
+                        onSelect={handleAction}
+                        statusActive={statusActive}
+                        isExpanded={isExpanded}
+                    />
                 </Div>
             </Container>
             <DetailsDrawer isExpanded={isExpanded} />
