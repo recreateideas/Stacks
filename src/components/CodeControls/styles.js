@@ -1,14 +1,9 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-    width: 100%;
-    height: 100%;  
-`;
-
-const ControlsContainer = styled.div`
 `;
 
 export {
-    ControlsContainer,
+    // eslint-disable-next-line import/prefer-default-export
     Container,
 };
