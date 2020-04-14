@@ -10,16 +10,15 @@ const ProjectEditYaml = () => {
     const project = useSelector(projectSelectors.projectByPath(yamlPath));
     return (
         <Container>
+            <ControlsContainer className="code-controls">
+                <CodeControls />
+            </ControlsContainer>
             <CodeEditor
                 id="code-edit-compose"
                 mode="json"
                 onChange={() => {}}
                 value={project}
-            >
-                <ControlsContainer>
-                    <CodeControls />
-                </ControlsContainer>
-            </CodeEditor>
+            />
         </Container>
     );
 };

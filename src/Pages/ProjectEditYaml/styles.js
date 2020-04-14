@@ -6,6 +6,10 @@ const Container = styled.div`
 `;
 
 const ControlsContainer = styled.div`
+    position: absolute;
+    z-index: 100;
+    bottom: 0px;
+    right: 0px;
 `;
 
 export {
