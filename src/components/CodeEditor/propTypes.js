@@ -10,7 +10,6 @@ const propTypes = {
         PropTypes.array,
     ]),
     wrapEnabled: PropTypes.bool,
-    enableSnippets: PropTypes.bool,
 };
 
 export default propTypes;

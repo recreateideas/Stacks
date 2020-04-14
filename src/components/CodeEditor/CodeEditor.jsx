@@ -1,5 +1,6 @@
 import React from 'react';
 import AceEditor from 'react-ace';
+import 'ace-builds';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_dark';
 import propTypes from './propTypes';
@@ -11,9 +12,9 @@ const CodeEditor = (props) => {
         onChange,
         id,
         value,
+        fontSize = 14,
         stringify = true,
         wrapEnabled = true,
-        enableSnippets = true,
         children,
     } = props;
     const normalizedValue = stringify
@@ -25,12 +26,15 @@ const CodeEditor = (props) => {
                 mode={mode}
                 theme="solarized_dark"
                 wrapEnabled={wrapEnabled}
-                enableSnippets={enableSnippets}
                 onChange={onChange}
-                fontSize={14}
+                fontSize={fontSize}
                 name={id}
+                setOptions={{ useWorker: false }}
                 editorProps={{ $blockScrolling: true }}
                 value={normalizedValue}
+                debounceChangePeriod={500}
+                enableBasicAutocompletion
+                focus
             />
             { children }
         </Container>

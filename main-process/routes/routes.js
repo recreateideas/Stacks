@@ -1,17 +1,19 @@
 const { ipcMain } = require('electron');
 const { EventEmitter } = require('events');
-const { controllers, events } = require('../controllers');
+const { docker, events, files } = require('../controllers');
 
 const eventEmitter = new EventEmitter();
 
 eventEmitter.on('new-docker-events', events.processEventsList);
 
-ipcMain.on('get-containers', controllers.getContainers);
+ipcMain.on('save-to-file', files.saveToFile);
 
-ipcMain.on('get-projects', controllers.getProjects);
+ipcMain.on('get-containers', docker.getContainers);
 
-ipcMain.on('get-images', controllers.getImages);
+ipcMain.on('get-projects', docker.getProjects);
 
-ipcMain.on('get-volumes', controllers.getVolumes);
+ipcMain.on('get-images', docker.getImages);
 
-ipcMain.on('get-networks', controllers.getNetworks);
+ipcMain.on('get-volumes', docker.getVolumes);
+
+ipcMain.on('get-networks', docker.getNetworks);

@@ -1,7 +1,9 @@
-const controllers = require('./controllers');
+const docker = require('./docker');
 const events = require('./events');
+const files = require('./files');
 
 module.exports = {
-    controllers,
+    docker,
     events,
+    files,
 };

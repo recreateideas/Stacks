@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const propTypes = {
-    someProp: PropTypes.string,
+    onClick: PropTypes.func,
 };
 
 export default propTypes;
