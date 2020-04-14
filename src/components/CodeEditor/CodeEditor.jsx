@@ -1,7 +1,8 @@
 import React from 'react';
 import AceEditor from 'react-ace';
 import 'ace-builds';
-import 'ace-builds/src-noconflict/mode-json';
+// import 'ace-builds/src-noconflict/mode-json';
+import 'ace-builds/src-noconflict/mode-yaml';
 import 'ace-builds/src-noconflict/theme-solarized_dark';
 import propTypes from './propTypes';
 import { Container } from './styles';
@@ -17,7 +18,7 @@ const CodeEditor = (props) => {
         wrapEnabled = true,
         children,
     } = props;
-    const normalizedValue = stringify
+    const normalizedValue = stringify && typeof value === 'object'
         ? JSON.stringify(value, null, 4)
         : value;
     return (

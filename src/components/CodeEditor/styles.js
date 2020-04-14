@@ -30,7 +30,7 @@ const Container = styled.div`
         .ace_line {
             color: ${props => props.theme.palette.neutral[props.theme.fixedToLight('300')]} !important;
         }
-        .ace_variable {
+        .ace_variable, .ace_tag {
             color: ${props => props.theme.palette.primary[props.theme.fixedToLight('300')]} !important;
         }
         .ace_string {

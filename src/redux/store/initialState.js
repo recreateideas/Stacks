@@ -3,7 +3,9 @@ const initialState = {
     CONTAINERS: {},
     IMAGES: {},
     NETWORKS: {},
-    PROJECTS: {},
+    PROJECTS: {
+        yamls: {},
+    },
     USER: {},
     VOLUMES: {},
 };

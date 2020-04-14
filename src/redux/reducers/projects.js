@@ -7,7 +7,10 @@ const PROJECTS = (oldState = initialState.PROJECTS, action) => {
     const { type, data } = action;
     switch (type) {
         case types.SET_PROJECTS:
-            return data;
+            return { ...state, ...data };
+        case types.SET_YAML_CONTENT:
+            state.yamls[data.path] = data.content;
+            return state;
         default:
             return state;
     }

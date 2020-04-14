@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { AddCircleOutline } from '@material-ui/icons';
 import { actions, selectors, useSelector } from '../../redux';
 import { Container, AddProject, Slots } from './styles';
+// eslint-disable-next-line import/no-cycle
 import { ProjectSlot } from '../../features';
 import { openViewInNewWindow } from '../../utils';
 
@@ -24,13 +25,14 @@ const Projects = () => {
             <Slots>
                 {projects && Object
                     .keys(projects)
+                    .filter(project => project !== 'yamls')
                     .map((path, index) => {
                         const project = projects[path];
                         return (
                             <ProjectSlot
                                 key={index}
                                 path={path}
-                                yaml={project}
+                                project={project}
                                 onYamlClick={() => editYaml(path)}
                             />
                         );

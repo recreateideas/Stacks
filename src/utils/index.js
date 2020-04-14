@@ -1,6 +1,6 @@
-import { openViewInNewWindow } from './window';
+import { openViewInNewWindow, saveContentToFile } from './window';
 
 export {
-    // eslint-disable-next-line import/prefer-default-export
+    saveContentToFile,
     openViewInNewWindow,
 };

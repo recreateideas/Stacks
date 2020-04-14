@@ -17,7 +17,17 @@ ipcRenderer.on('projects', (event, projects) => {
     });
 });
 
+const getYamlContent = path => () => ipcRenderer.send('get-file-content', { path, responseEventName: 'yaml-content' });
+ipcRenderer.on('yaml-content', (event, data) => {
+    const { content, path } = data;
+    store.dispatch({
+        type: types.SET_YAML_CONTENT,
+        data: { content, path },
+    });
+});
+
 export {
     getProjects,
     setProject,
+    getYamlContent,
 };

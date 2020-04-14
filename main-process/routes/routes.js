@@ -8,6 +8,8 @@ eventEmitter.on('new-docker-events', events.processEventsList);
 
 ipcMain.on('save-to-file', files.saveToFile);
 
+ipcMain.on('get-file-content', files.getFileContent);
+
 ipcMain.on('get-containers', docker.getContainers);
 
 ipcMain.on('get-projects', docker.getProjects);

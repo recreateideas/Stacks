@@ -57,6 +57,7 @@
     "hex-rgba": "1.0.2",
     "history": "4.10.1",
     "js-yaml": "3.13.1",
+    "json-to-pretty-yaml": "^1.2.2",
     "lodash.isequal": "4.5.0",
     "react": "16.13.1",
     "react-ace": "8.1.0",

@@ -8,9 +8,10 @@ import { StatusIndicator } from '../../components';
 import DetailsDrawer from './DetailsDrawer';
 
 const ProjectSlot = (props) => {
-    const { onYamlClick, path, yaml } = props;
+    const { onYamlClick, path, project } = props;
     const [isExpanded, setIsExpanded] = useState(false);
-    const { length: containersNo } = Object.keys(yaml.services);
+    console.log(project);
+    const { length: containersNo } = Object.keys(project.services);
     const displayPath = `${path.replace(/^\//, '')}/`;
     const handleAction = (action) => {
         switch (action) {
