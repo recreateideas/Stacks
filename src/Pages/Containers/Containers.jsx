@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { actions, selectors, useSelector } from '../../redux';
-import { Container } from './styles';
+import { Container, Slots } from './styles';
+import DockerContainer from './DockerContainer';
 
 const Containers = () => {
     const dispatch = useDispatch();
@@ -13,7 +14,18 @@ const Containers = () => {
     // eslint-disable-next-line
     }, []);
     return (
-        <Container> Containers {JSON.stringify(containers, null, 4)}</Container>
+        <Container>
+            <Slots>
+                {Object
+                    .keys(containers)
+                    .map(id => (
+                        <DockerContainer
+                            key={id}
+                            data={containers[id]}
+                        />
+                    ))}
+            </Slots>
+        </Container>
     );
 };
 

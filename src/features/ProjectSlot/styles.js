@@ -1,13 +1,12 @@
 import styled from 'styled-components';
+import { styledComponents } from '../../ui-core';
 
-const Container = styled.div`
+const { SlotItem } = styledComponents;
+
+const Container = styled(SlotItem)`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 8px;
-    border: solid 1px ${props => props.theme.palette.neutral['300']};
-    background-color: ${props => props.theme.palette.neutral['100']};
-    margin-bottom: 8px;
 `;
 
 const Path = styled.div`

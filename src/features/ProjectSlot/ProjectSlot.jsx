@@ -10,7 +10,6 @@ import DetailsDrawer from './DetailsDrawer';
 const ProjectSlot = (props) => {
     const { onYamlClick, path, project } = props;
     const [isExpanded, setIsExpanded] = useState(false);
-    console.log(project);
     const { length: containersNo } = Object.keys(project.services);
     const displayPath = `${path.replace(/^\//, '')}/`;
     const handleAction = (action) => {
