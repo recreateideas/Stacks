@@ -23,9 +23,6 @@ const Container = styled.div`
                 background-color: ${props => props.theme.palette.neutral[props.theme.fixedToLight('500')]} !important;
             }
         }
-        /* .ace_gutter-cell.ace_gutter-active-line {
-            background-color: ${props => props.theme.palette.neutral[props.theme.fixedToLight('500')]} !important;
-        } */
         .ace_scroller {
             background-color: ${props => props.theme.palette.neutral[props.theme.fixedToLight('700')]} !important;
         }

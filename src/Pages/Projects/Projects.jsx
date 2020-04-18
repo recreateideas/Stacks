@@ -17,6 +17,7 @@ const Projects = () => {
         const config = {
             width: 700,
             height: 700,
+            title: `Code Editor - ${path}`,
         };
         openViewInNewWindow('ProjectEditYaml', config);
     };

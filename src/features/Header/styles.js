@@ -11,7 +11,7 @@ const Container = styled.div`
 const Title = styled.div`
     font-weight: 400;
     font-size: 20px;
-    padding: 16px;
+    padding: 0px 16px 16px 16px;
     color: ${props => props.theme.palette.neutral['600']};
 `;
 

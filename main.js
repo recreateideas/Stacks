@@ -59,11 +59,13 @@ const initialize = () => {
             webPreferences: {
                 nodeIntegration: true,
             },
+            frame: false,
             show: false,
+            'standard-window': false,
         };
 
         mainWindow = new BrowserWindow(windowOptions);
-
+        mainWindow.setTitle('Moby');
         const startUrl = process.env.PORT
             ? `http://localhost:${process.env.PORT}`
             : url.format({
@@ -97,7 +99,10 @@ const initialize = () => {
 
     const openViewInNewWindow = (event, payload) => {
         const {
-            config,
+            config: {
+                title,
+                config,
+            },
             view,
         } = payload;
         const newWindow = new BrowserWindow({
@@ -108,6 +113,7 @@ const initialize = () => {
             show: false,
             ...config,
         });
+        newWindow.setTitle(title);
         const isDev = process.env.NODE_ENV === 'development';
         if (isDev) {
             newWindow.webContents.openDevTools();

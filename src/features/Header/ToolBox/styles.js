@@ -3,8 +3,10 @@ import styled from 'styled-components';
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     padding-right: 16px;
+    position: relative;
+    top: -3px;
     .MuiSvgIcon-root {
         font-size: 30px;
         cursor: pointer;
