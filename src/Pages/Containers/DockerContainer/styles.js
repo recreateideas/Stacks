@@ -37,13 +37,14 @@ const Label = styled.div`
 
 const Value = styled.div`
     font-weight: 400;
-    &.name {
-        font-weight: 800;
-        font-size: 18px;
-    }
     &.id {
         line-height: 21px;
     }
+`;
+
+const Strong = styled.div`
+    font-weight: 800;
+    font-size: 18px;
 `;
 
 const Table = styled.div`
@@ -56,5 +57,6 @@ export {
     Cell,
     Label,
     Value,
+    Strong,
     Table,
 };

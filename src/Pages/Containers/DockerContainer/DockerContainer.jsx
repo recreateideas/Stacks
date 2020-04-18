@@ -1,24 +1,24 @@
 import React from 'react';
 import propTypes from './propTypes';
 import {
-    Container, Row, Cell, Label, Value, Table,
+    Container, Row, Cell, Label, Value, Table, Strong,
 } from './styles';
 import { StatusIndicator } from '../../../components';
 
 const DockerContainer = (props) => {
     const { data } = props;
     const {
-        Names: name,
-        ID: id,
+        Names: name = 'N/A',
+        ID: id = 'N/A',
         Image: image,
-        Size: size,
+        Size: size = 'N/A',
         Labels: {
-            'com.docker.compose.project.config_files': composeFile,
+            'com.docker.compose.project.config_files': composeFile = 'N/A',
         },
-        Networks: networks,
-        Ports: ports,
-        Status: status,
-        RunningFor: runningFor,
+        Networks: networks = 'N/A',
+        Ports: ports = 'NA',
+        Status: status = 'N/A',
+        RunningFor: runningFor = 'N/A',
     } = data;
     const isRunning = /^Up/.test(status);
     return (
@@ -26,8 +26,7 @@ const DockerContainer = (props) => {
             <Table>
                 <Row>
                     <Cell>
-                        {/* <Label>Name:</Label> */}
-                        <Value className="name">{name}</Value>
+                        <Strong>{name}</Strong>
                     </Cell>
                     <Cell>
                         <Row>
