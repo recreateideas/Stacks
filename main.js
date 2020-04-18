@@ -95,15 +95,18 @@ const initialize = () => {
         });
     };
 
-    const openViewInNewWindow = (event, view) => {
+    const openViewInNewWindow = (event, payload) => {
+        const {
+            config,
+            view,
+        } = payload;
         const newWindow = new BrowserWindow({
             name: `popup-view-${view}`,
-            width: 500,
-            height: 700,
             webPreferences: {
                 nodeIntegration: true,
             },
             show: false,
+            ...config,
         });
         const isDev = process.env.NODE_ENV === 'development';
         if (isDev) {

@@ -14,7 +14,11 @@ const Projects = () => {
     const projects = useSelector(projectSelectors.projects);
     const editYaml = (path) => {
         localStorage.setItem('edit-yaml', path);
-        openViewInNewWindow('ProjectEditYaml');
+        const config = {
+            width: 700,
+            height: 700,
+        };
+        openViewInNewWindow('ProjectEditYaml', config);
     };
     useEffect(() => {
         dispatch(getProjects());

@@ -1,7 +1,11 @@
 const { ipcRenderer } = window.require('electron');
 
-const openViewInNewWindow = (view) => {
-    ipcRenderer.send('new-view', view);
+const openViewInNewWindow = (view, config) => {
+    const payload = {
+        view,
+        config,
+    };
+    ipcRenderer.send('new-view', payload);
 };
 
 const saveContentToFile = (path, content, convert) => {
