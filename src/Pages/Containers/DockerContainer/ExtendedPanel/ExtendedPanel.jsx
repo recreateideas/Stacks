@@ -18,7 +18,7 @@ const ExtendedPanel = (props) => {
         }
         // eslint-disable-next-line
     }, [isExpanded]);
-    console.log(extraData);
+    // console.log(extraData);
     return (
         <Container className="extended-panel" isExpanded={isExpanded && hasData}>
             {JSON.stringify(extraData)}
