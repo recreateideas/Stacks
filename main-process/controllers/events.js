@@ -14,12 +14,6 @@ const handleRawEvents = win => (chunk) => {
     }, 1000);
 };
 
-const processEventsList = (list) => {
-    const newContainersEvents = list.filter(item => item.Type === 'container');
-    return newContainersEvents;
-};
-
 module.exports = {
     handleRawEvents,
-    processEventsList,
 };

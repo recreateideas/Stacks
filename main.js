@@ -99,10 +99,6 @@ const initialize = () => {
         mainWindow.on('closed', () => {
             mainWindow = null;
         });
-
-        mainWindow.webContents.on('new-docker-events', (args) => {
-            console.log(args);
-        });
     };
 
     const openViewInNewWindow = (event, payload) => {

@@ -34,7 +34,6 @@ const DockerContainer = (props) => {
                 setIsExpanded(!isExpanded);
                 break;
             case 'clone':
-                console.log('clone');
                 break;
             case 'start':
             case 'restart':
