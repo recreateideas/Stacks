@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import hexToRgba from 'hex-rgba';
 
 const SlotItem = styled.div`
@@ -13,8 +13,9 @@ const Action = styled.div`
     display: flex;
     margin-top: auto;
     margin-bottom: auto;
-    margin-left: 4px;
     border-radius: 20px;
+    height: 21px;
+    width: 21px;
     & svg, & svg * {
         color: ${props => props.theme.palette.primary['600']};
     }

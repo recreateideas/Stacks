@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import propTypes from './propTypes';
 import {
     Container, Row, Cell, Label, Value, Table, Strong,
 } from './styles';
 import { StatusIndicator } from '../../../components';
+import Actions from './Actions';
 
 const DockerContainer = (props) => {
     const { data } = props;
@@ -20,7 +21,19 @@ const DockerContainer = (props) => {
         Status: status = 'N/A',
         RunningFor: runningFor = 'N/A',
     } = data;
+    const [isExpanded, setIsExpanded] = useState(false);
     const isRunning = /^Up/.test(status);
+    const handleAction = (action) => {
+        switch (action) {
+            case 'expand':
+                setIsExpanded(!isExpanded);
+                break;
+            case 'yaml':
+                onYamlClick();
+                break;
+            default: break;
+        }
+    };
     return (
         <Container className="container">
             <Table>
@@ -73,6 +86,7 @@ const DockerContainer = (props) => {
                     </Cell>
                 </Row>
             </Table>
+            <Actions onSelect={handleAction} isActive={isRunning} isExpanded={isExpanded} />
         </Container>
     );
 };

@@ -8,6 +8,7 @@ const Container = styled.div`
 `;
 
 const Action = styled(StyledAction)`
+    margin-left: 4px;
     &.yaml svg {
         transform: rotate(45deg);
     }

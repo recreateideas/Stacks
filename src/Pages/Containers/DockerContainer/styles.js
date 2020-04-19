@@ -4,11 +4,25 @@ import { styledComponents } from '../../../ui-core';
 const { SlotItem } = styledComponents;
 
 const Container = styled(SlotItem)`
+    position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     .status  .status-indicator-inner{
         margin-right: 8px;
     }
+    /* & .actions {
+        visibility: hidden;
+    }
+    &:hover {
+        .actions {
+            visibility: visible;
+        }
+    } */
+`;
+
+const Table = styled.div`
+    width: 100%;
 `;
 
 const Row = styled.div`
@@ -45,10 +59,6 @@ const Value = styled.div`
 const Strong = styled.div`
     font-weight: 800;
     font-size: 18px;
-`;
-
-const Table = styled.div`
-    /* border: solid 1px grey; */
 `;
 
 export {
