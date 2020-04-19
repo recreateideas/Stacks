@@ -11,18 +11,20 @@ const Actions = (props) => {
         onSelect(action);
     };
     const ExpandIcon = isExpanded ? ExpandMore : ExpandLess;
+    const startStatusClass = statusActive ? 'inactive' : '';
+    const stopStatusClass = !statusActive ? 'inactive' : '';
     return (
         <Container className="actions">
             <Action className="yaml with-hover">
                 <Code onClick={() => onClick('yaml')} />
             </Action>
-            <Action className="start with-hover" statusActive={statusActive}>
+            <Action className={`start with-hover ${startStatusClass}`}>
                 <PlayCircleOutline onClick={() => !statusActive && onClick('start')} />
             </Action>
-            <Action className="stop with-hover" statusActive={statusActive}>
+            <Action className={`stop with-hover ${stopStatusClass}`}>
                 <Eject onClick={() => statusActive && onClick('stop')} />
             </Action>
-            <Action className="expand" statusActive={statusActive}>
+            <Action className="expand">
                 <ExpandIcon onClick={() => onClick('expand')} />
             </Action>
         </Container>

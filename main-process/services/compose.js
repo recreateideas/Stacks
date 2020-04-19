@@ -11,7 +11,6 @@ const saveJsonAsYaml = (path, jsonContent) => {
 };
 
 const saveAsIs = (path, content) => {
-    console.log(content);
     fs.writeFileSync(path, content);
 };
 
