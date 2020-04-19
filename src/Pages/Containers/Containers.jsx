@@ -13,6 +13,7 @@ const Containers = () => {
         dispatch(getContainers());
     // eslint-disable-next-line
     }, []);
+    // sort containers by name/status, start all, stop all, refresh data
     return (
         <Container>
             <Slots>

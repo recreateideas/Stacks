@@ -17,12 +17,10 @@ const Action = styled(StyledAction)`
     &:not(:last-of-type) {
         margin-bottom: 4px;
     }
-    /* &.yaml svg {
-        transform: rotate(45deg);
+    &.exec svg {
+        font-size: 19px;
+        margin-left: 1px;
     }
-    &.expand {
-        margin-left: 16px;
-    } */
 `;
 
 export {

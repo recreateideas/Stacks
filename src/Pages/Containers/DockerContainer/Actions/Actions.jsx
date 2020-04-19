@@ -29,7 +29,7 @@ const Actions = (props) => {
             <Action className="with-hover">
                 <List onClick={() => onClick('logs')} />
             </Action>
-            <Action className="with-hover">
+            <Action className="with-hover exec">
                 <LaptopMac onClick={() => onClick('docker-exec')} />
             </Action>
             <Action className="with-hover">

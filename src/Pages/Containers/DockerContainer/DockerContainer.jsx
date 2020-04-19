@@ -53,7 +53,7 @@ const DockerContainer = (props) => {
             <Table>
                 <Row>
                     <Cell>
-                        <Strong>{serviceName}</Strong>
+                        <Strong className="service-name">{serviceName}</Strong>
                     </Cell>
                     <Cell>
                         <Row>

@@ -11,14 +11,17 @@ const Container = styled(SlotItem)`
     .status  .status-indicator-inner{
         margin-right: 8px;
     }
-    /* & .actions {
+    & .actions {
         visibility: hidden;
     }
     &:hover {
+        .service-name {
+            color: ${props => props.theme.palette.primary['400']};
+        }
         .actions {
             visibility: visible;
         }
-    } */
+    }
 `;
 
 const Table = styled.div`
