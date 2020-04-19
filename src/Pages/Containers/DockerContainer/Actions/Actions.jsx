@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    PlayCircleOutline, Eject, HdrWeak, List, LaptopMac, ExpandMore, ExpandLess,
+    PlayCircleOutline, Eject, HdrWeak, List, LaptopMac, ExpandMore, ExpandLess, RotateLeft,
 } from '@material-ui/icons';
 import propTypes from './propTypes';
 import { Container, Action } from './styles';
@@ -12,12 +12,13 @@ const Actions = (props) => {
     };
     // start/restart, clone, logs, docker exec -it, expand
     const ExpandIcon = isExpanded ? ExpandMore : ExpandLess;
-    const startStatusClass = isActive ? 'inactive' : '';
+    const startAction = isActive ? 'restart' : 'start';
+    const StartIcon = isActive ? RotateLeft : PlayCircleOutline;
     const stopStatusClass = !isActive ? 'inactive' : '';
     return (
         <Container className="actions">
-            <Action className={`start with-hover ${startStatusClass}`}>
-                <PlayCircleOutline onClick={() => onClick('start')} />
+            <Action className="start with-hover">
+                <StartIcon onClick={() => onClick(startAction)} />
             </Action>
             <Action className={`stop with-hover ${stopStatusClass}`}>
                 <Eject onClick={() => onClick('stop')} />

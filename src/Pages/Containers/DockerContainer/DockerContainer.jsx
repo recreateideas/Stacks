@@ -1,7 +1,7 @@
 /* eslint-disable no-case-declarations */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { actions, selectors, useSelector } from '../../../redux';
+import { actions } from '../../../redux';
 import propTypes from './propTypes';
 import {
     Container, Row, Cell, Label, Value, Table, Strong,
