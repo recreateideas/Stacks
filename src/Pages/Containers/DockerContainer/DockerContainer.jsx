@@ -4,13 +4,14 @@ import { useDispatch } from 'react-redux';
 import { actions } from '../../../redux';
 import propTypes from './propTypes';
 import {
-    Container, Row, Cell, Label, Value, Table, Strong,
+    Container, MainData, Row, Cell, Label, Value, Table, Strong,
 } from './styles';
 import { StatusIndicator } from '../../../components';
 import Actions from './Actions';
+import ExtendedPanel from './ExtendedPanel';
 
 const DockerContainer = (props) => {
-    const { data } = props;
+    const { data, onShowLogs } = props;
     const {
         ID: id = 'N/A',
         Image: image,
@@ -45,62 +46,77 @@ const DockerContainer = (props) => {
                 };
                 dispatch(runContainerAction(args));
                 break;
+            case 'logs':
+                onShowLogs({ serviceName });
+                break;
             default: break;
         }
     };
+    console.log('render', serviceName);
     return (
         <Container className="container">
-            <Table>
-                <Row>
-                    <Cell>
-                        <Strong className="service-name">{serviceName}</Strong>
-                    </Cell>
-                    <Cell>
-                        <Row>
-                            <Label className="id">ID:</Label>
-                            <Value className="id">{id}</Value>
-                        </Row>
-                    </Cell>
-                </Row>
-                <Row>
-                    <Cell>
-                        <Label>Image:</Label>
-                        <Value>{image}</Value>
-                    </Cell>
-                    <Cell>
-                        <Label>Size:</Label>
-                        <Value>{size}</Value>
-                    </Cell>
-                </Row>
-                <Row>
-                    <Cell>
-                        <Label>Compose:</Label>
-                        <Value>{composeFile}</Value>
-                    </Cell>
-                </Row>
-                <Row>
-                    <Cell>
-                        <Label>Ports:</Label>
-                        <Value>{ports}</Value>
-                    </Cell>
-                    <Cell>
-                        <Label>Networks:</Label>
-                        <Value>{networks}</Value>
-                    </Cell>
-                </Row>
-                <Row>
-                    <Cell className="status">
-                        <StatusIndicator isActive={isRunning} />
-                        <Label>Status:</Label>
-                        <Value>{status}</Value>
-                    </Cell>
-                    <Cell>
-                        <Label>Up Time:</Label>
-                        <Value>{runningFor}</Value>
-                    </Cell>
-                </Row>
-            </Table>
-            <Actions onSelect={handleAction} isActive={isRunning} isExpanded={isExpanded} />
+            <MainData>
+                <Table>
+                    <Row>
+                        <Cell>
+                            <Strong className="service-name">{serviceName}</Strong>
+                        </Cell>
+                        <Cell>
+                            <Row>
+                                <Label className="id">ID:</Label>
+                                <Value className="id">{id}</Value>
+                            </Row>
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <Label>Image:</Label>
+                            <Value>{image}</Value>
+                        </Cell>
+                        <Cell>
+                            <Label>Size:</Label>
+                            <Value>{size}</Value>
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <Label>Compose:</Label>
+                            <Value>{composeFile}</Value>
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <Label>Ports:</Label>
+                            <Value>{ports}</Value>
+                        </Cell>
+                        <Cell>
+                            <Label>Networks:</Label>
+                            <Value>{networks}</Value>
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell className="status">
+                            <StatusIndicator isActive={isRunning} />
+                            <Label>Status:</Label>
+                            <Value>{status}</Value>
+                        </Cell>
+                        <Cell>
+                            <Label>Up Time:</Label>
+                            <Value>{runningFor}</Value>
+                        </Cell>
+                    </Row>
+                </Table>
+                <Actions
+                    onSelect={handleAction}
+                    isActive={isRunning}
+                    isExpanded={isExpanded}
+                />
+            </MainData>
+            <ExtendedPanel
+                isExpanded={isExpanded}
+                containerId={id}
+                serviceName={serviceName}
+            />
         </Container>
     );
 };

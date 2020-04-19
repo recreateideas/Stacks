@@ -8,6 +8,14 @@ const CONTAINERS = (oldState = initialState.CONTAINERS, action) => {
     switch (type) {
         case types.SET_CONTAINERS:
             return data;
+        case types.SET_CONTAINER_EXTRA_DATA:
+            return {
+                ...state,
+                [data.containerId]: {
+                    ...state[data.containerId],
+                    extraData: data.extradata,
+                },
+            };
         default:
             return state;
     }

@@ -17,17 +17,38 @@ ipcRenderer.on('containers', (event, containers) => {
     });
 });
 
+const inspectContainer = ({ serviceName, containerId }) => () => ipcRenderer.send('inspect-container', { serviceName, containerId });
+ipcRenderer.on('container-inspected-data', (event, payload) => {
+    const { data, containerId } = payload;
+    const [extradata] = data;
+    store.dispatch({
+        type: types.SET_CONTAINER_EXTRA_DATA,
+        data: { extradata, containerId },
+    });
+});
+
 const runContainerAction = args => () => ipcRenderer.send('container-action', args);
 
 ipcRenderer.on('new-docker-events', (e, events) => {
+    store.dispatch({
+        type: types.NEW_DOCKER_EVENTS,
+    });
     const hasContainersEvents = !!events.filter(event => event.Type === 'container').length;
     if (hasContainersEvents) {
         getContainers()();
     }
 });
 
+ipcRenderer.on('new-container-logs', (e, logs) => {
+    store.dispatch({
+        type: types.NEW_DOCKER_LOGS,
+    });
+    console.log(logs);
+});
+
 export {
     setContainer,
     getContainers,
     runContainerAction,
+    inspectContainer,
 };

@@ -1,6 +1,8 @@
 const containers = state => state.appState.containers;
 
+const container = containerId => state => state.appState.containers[containerId];
+
 export {
-    // eslint-disable-next-line import/prefer-default-export
     containers,
+    container,
 };

@@ -32,10 +32,17 @@ const getNetworks = (event) => {
 };
 
 const containerAction = (event, args) => {
-    const { composeFile, action, serviceName } = args;
+    const { composeFile } = args;
     const service = composeFile ? compose : docker;
     const result = service.containerAction(args);
-    event.sender.send(`action-${action}-${serviceName}`, result);
+    event.sender.send('container-action-result', result);
+};
+
+const inspectContainer = (event, args) => {
+    const { serviceName, containerId } = args;
+    console.log(serviceName, containerId);
+    const data = docker.inspectContainer(serviceName);
+    event.sender.send('container-inspected-data', { data, containerId });
 };
 
 module.exports = {
@@ -45,4 +52,5 @@ module.exports = {
     getVolumes,
     getNetworks,
     containerAction,
+    inspectContainer,
 };

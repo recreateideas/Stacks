@@ -16,3 +16,5 @@ ipcMain.on('get-volumes', docker.getVolumes);
 ipcMain.on('get-networks', docker.getNetworks);
 
 ipcMain.on('container-action', docker.containerAction);
+
+ipcMain.on('inspect-container', docker.inspectContainer);

@@ -6,8 +6,8 @@ const { SlotItem } = styledComponents;
 const Container = styled(SlotItem)`
     position: relative;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    /* justify-content: space-between; */
     .status  .status-indicator-inner{
         margin-right: 8px;
     }
@@ -22,6 +22,12 @@ const Container = styled(SlotItem)`
             visibility: visible;
         }
     }
+`;
+
+const MainData = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 `;
 
 const Table = styled.div`
@@ -66,6 +72,7 @@ const Strong = styled.div`
 
 export {
     Container,
+    MainData,
     Row,
     Cell,
     Label,

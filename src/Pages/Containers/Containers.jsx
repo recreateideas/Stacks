@@ -9,11 +9,16 @@ const Containers = () => {
     const { containers: { getContainers } } = actions;
     const { containers: containerSelectors } = selectors;
     const containers = useSelector(containerSelectors.containers);
+    const showLogs = (args) => {
+        const { serviceName } = args;
+        console.log(serviceName);
+    };
     useEffect(() => {
         dispatch(getContainers());
     // eslint-disable-next-line
     }, []);
     // sort containers by name/status, start all, stop all, refresh data
+    // env variables
     return (
         <Container>
             <Slots>
@@ -23,6 +28,7 @@ const Containers = () => {
                         <DockerContainer
                             key={id}
                             data={containers[id]}
+                            onShowLogs={showLogs}
                         />
                     ))}
             </Slots>
