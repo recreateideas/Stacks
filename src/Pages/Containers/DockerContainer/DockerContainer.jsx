@@ -52,7 +52,6 @@ const DockerContainer = (props) => {
             default: break;
         }
     };
-    console.log('render', serviceName);
     return (
         <Container className="container">
             <MainData>
