@@ -10,7 +10,6 @@ const Container = styled.div`
     flex-direction: column;
     box-sizing: border-box;
     padding: 8px;
-    /* border: solid 1px black; */
     background-color: ${props => props.theme.palette.primary['100']};
 `;
 

@@ -1,4 +1,7 @@
+/* eslint-disable no-case-declarations */
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { actions, selectors, useSelector } from '../../../redux';
 import propTypes from './propTypes';
 import {
     Container, Row, Cell, Label, Value, Table, Strong,
@@ -9,11 +12,11 @@ import Actions from './Actions';
 const DockerContainer = (props) => {
     const { data } = props;
     const {
-        Names: name = 'N/A',
         ID: id = 'N/A',
         Image: image,
         Size: size = 'N/A',
         Labels: {
+            'com.docker.compose.service': serviceName = 'N/A',
             'com.docker.compose.project.config_files': composeFile = 'N/A',
         },
         Networks: networks = 'N/A',
@@ -21,6 +24,8 @@ const DockerContainer = (props) => {
         Status: status = 'N/A',
         RunningFor: runningFor = 'N/A',
     } = data;
+    const dispatch = useDispatch();
+    const { containers: { runContainerAction } } = actions;
     const [isExpanded, setIsExpanded] = useState(false);
     const isRunning = /^Up/.test(status);
     const handleAction = (action) => {
@@ -28,8 +33,18 @@ const DockerContainer = (props) => {
             case 'expand':
                 setIsExpanded(!isExpanded);
                 break;
-            case 'yaml':
-                onYamlClick();
+            case 'clone':
+                console.log('clone');
+                break;
+            case 'start':
+            case 'restart':
+            case 'stop':
+                const args = {
+                    action,
+                    composeFile,
+                    serviceName,
+                };
+                dispatch(runContainerAction(args));
                 break;
             default: break;
         }
@@ -39,7 +54,7 @@ const DockerContainer = (props) => {
             <Table>
                 <Row>
                     <Cell>
-                        <Strong>{name}</Strong>
+                        <Strong>{serviceName}</Strong>
                     </Cell>
                     <Cell>
                         <Row>

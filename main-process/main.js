@@ -2,6 +2,10 @@ require('./routes');
 const { events } = require('./controllers');
 const { docker } = require('./services');
 
-const { stdout: dockerEvents } = docker.listenToEvents();
+const setupMainProcess = (win) => {
+    const { stdout: dockerEvents } = docker.listenToEvents();
 
-dockerEvents.on('data', events.handleRawEvents);
+    dockerEvents.on('data', events.handleRawEvents(win));
+};
+
+module.exports = setupMainProcess;

@@ -1,10 +1,6 @@
-const { EventEmitter } = require('events');
-
-const eventEmitter = new EventEmitter();
-
 let inDebounce;
 let events = [];
-const handleRawEvents = (chunk) => {
+const handleRawEvents = win => (chunk) => {
     const parsed = chunk
         .toString()
         .split(/\n/)
@@ -13,7 +9,7 @@ const handleRawEvents = (chunk) => {
     events = events.concat(parsed);
     clearTimeout(inDebounce);
     inDebounce = setTimeout(() => {
-        eventEmitter.emit('new-docker-events', events);
+        win.webContents.send('new-docker-events', events);
         events = [];
     }, 1000);
 };

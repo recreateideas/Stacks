@@ -1,10 +1,5 @@
 const { ipcMain } = require('electron');
-const { EventEmitter } = require('events');
-const { docker, events, files } = require('../controllers');
-
-const eventEmitter = new EventEmitter();
-
-eventEmitter.on('new-docker-events', events.processEventsList);
+const { docker, files } = require('../controllers');
 
 ipcMain.on('save-to-file', files.saveToFile);
 
@@ -19,3 +14,5 @@ ipcMain.on('get-images', docker.getImages);
 ipcMain.on('get-volumes', docker.getVolumes);
 
 ipcMain.on('get-networks', docker.getNetworks);
+
+ipcMain.on('container-action', docker.containerAction);

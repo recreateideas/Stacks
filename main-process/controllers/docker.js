@@ -31,10 +31,18 @@ const getNetworks = (event) => {
     event.sender.send('networks', networks);
 };
 
+const containerAction = (event, args) => {
+    const { composeFile, action, serviceName } = args;
+    const service = composeFile ? compose : docker;
+    const result = service.containerAction(args);
+    event.sender.send(`action-${action}-${serviceName}`, result);
+};
+
 module.exports = {
     getContainers,
     getProjects,
     getImages,
     getVolumes,
     getNetworks,
+    containerAction,
 };

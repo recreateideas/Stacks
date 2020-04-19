@@ -17,7 +17,7 @@ const Actions = (props) => {
     return (
         <Container className="actions">
             <Action className={`start with-hover ${startStatusClass}`}>
-                <PlayCircleOutline onClick={() => onClick('')} />
+                <PlayCircleOutline onClick={() => onClick('start')} />
             </Action>
             <Action className={`stop with-hover ${stopStatusClass}`}>
                 <Eject onClick={() => onClick('stop')} />

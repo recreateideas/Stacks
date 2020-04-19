@@ -44,11 +44,13 @@ const makeSingleInstance = () => {
     });
 };
 
-const loadMainProcess = () => require(path.join(__dirname, '/main-process/main.js'));
+const loadMainProcess = () => {
+    const setupMainProcess = require(path.join(__dirname, '/main-process/main.js'));
+    setupMainProcess(mainWindow);
+};
 
 const initialize = () => {
     makeSingleInstance();
-    loadMainProcess();
     const createWindow = () => {
         const windowOptions = {
             width: 1080,
@@ -89,11 +91,17 @@ const initialize = () => {
                 },
             });
         }
+
         mainWindow.once('ready-to-show', () => {
             mainWindow.show();
         });
+
         mainWindow.on('closed', () => {
             mainWindow = null;
+        });
+
+        mainWindow.webContents.on('new-docker-events', (args) => {
+            console.log(args);
         });
     };
 
@@ -137,6 +145,7 @@ const initialize = () => {
 
     app.on('ready', () => {
         createWindow();
+        loadMainProcess();
     });
 
     app.on('window-all-closed', () => {
