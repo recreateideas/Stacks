@@ -43,10 +43,13 @@ const listNetworks = () => {
 
 const inspectContainer = name => JSON.parse(childProcess.execSync(`docker container inspect ${name}`).toString());
 
+const containerStats = name => _runCommandWithOptions(`docker stats -a ${name}`)('--no-stream');
+
 const listenToEvents = () => childProcess.spawn('docker', ['events', '--format', '{{json .}}']);
 
 module.exports = {
     inspectContainer,
+    containerStats,
     listContainers,
     listImages,
     listenToEvents,

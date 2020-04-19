@@ -20,7 +20,7 @@ ipcRenderer.on('containers', (event, containers) => {
 const inspectContainer = ({ serviceName, containerId }) => () => ipcRenderer.send('inspect-container', { serviceName, containerId });
 ipcRenderer.on('container-inspected-data', (event, payload) => {
     const { data, containerId } = payload;
-    const [extradata] = data;
+    const extradata = data;
     store.dispatch({
         type: types.SET_CONTAINER_EXTRA_DATA,
         data: { extradata, containerId },

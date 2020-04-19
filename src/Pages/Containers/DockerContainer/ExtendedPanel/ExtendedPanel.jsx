@@ -10,6 +10,7 @@ const ExtendedPanel = (props) => {
     const { containers: { inspectContainer } } = actions;
     const { containers: containerSelectors } = selectors;
     const { extraData } = useSelector(containerSelectors.container(containerId));
+    const hasData = !!extraData;
     useEffect(() => {
         if (isExpanded) {
             const args = { serviceName, containerId };
@@ -19,8 +20,8 @@ const ExtendedPanel = (props) => {
     }, [isExpanded]);
     console.log(extraData);
     return (
-        <Container className="extended-panel" isExpanded={isExpanded}>
-            Extra Info
+        <Container className="extended-panel" isExpanded={isExpanded && hasData}>
+            {JSON.stringify(extraData)}
         </Container>
     );
 };

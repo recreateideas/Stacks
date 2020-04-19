@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     height: auto;
-    max-height: ${props => (props.isExpanded ? '100px' : '0px')};
+    max-height: ${props => (props.isExpanded ? '300px' : '0px')};
     transition: max-height .2s;
-    overflow: hidden;
+    overflow-y: ${props => (props.isExpanded ? 'auto' : 'hidden')};
+    word-break: break-word;
 `;
 
 export {

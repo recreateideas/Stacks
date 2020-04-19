@@ -40,8 +40,9 @@ const containerAction = (event, args) => {
 
 const inspectContainer = (event, args) => {
     const { serviceName, containerId } = args;
-    console.log(serviceName, containerId);
-    const data = docker.inspectContainer(serviceName);
+    const [container] = docker.inspectContainer(serviceName);
+    const [stats] = docker.containerStats(serviceName);
+    const data = { ...container, stats };
     event.sender.send('container-inspected-data', { data, containerId });
 };
 
