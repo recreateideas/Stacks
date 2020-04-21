@@ -9,6 +9,14 @@ const setProject = project => ({
     data: project,
 });
 
+const projectsLoadPending = ({
+    type: types.SET_PROJECTS_LOAD_PENDING,
+});
+
+const projectsLoadComplete = ({
+    type: types.SET_PROJECTS_LOAD_COMPLETE,
+});
+
 const getProjects = () => () => ipcRenderer.send('get-projects');
 ipcRenderer.on('projects', (event, projects) => {
     store.dispatch({
@@ -26,8 +34,20 @@ ipcRenderer.on('yaml-content', (event, data) => {
     });
 });
 
+ipcRenderer.on('window-ready', (event, data) => {
+    const { view } = data;
+    switch (view) {
+        case 'ProjectEditYaml':
+        default:
+            store.dispatch(projectsLoadComplete);
+            break;
+    }
+});
+
 export {
     getProjects,
     setProject,
     getYamlContent,
+    projectsLoadPending,
+    projectsLoadComplete,
 };

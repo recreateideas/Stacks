@@ -109,8 +109,9 @@ const initialize = () => {
             },
             view,
         } = payload;
+        const name = `popup-view-${view}`;
         const newWindow = new BrowserWindow({
-            name: `popup-view-${view}`,
+            name,
             webPreferences: {
                 nodeIntegration: true,
             },
@@ -133,6 +134,7 @@ const initialize = () => {
             });
         newWindow.loadURL(decodeURIComponent(viewUrl));
         newWindow.once('ready-to-show', () => {
+            mainWindow.webContents.send('window-ready', { view });
             newWindow.show();
         });
     };

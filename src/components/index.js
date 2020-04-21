@@ -3,6 +3,7 @@ import Toggle from './Toggle';
 import StatusIndicator from './StatusIndicator';
 import CodeEditor from './CodeEditor';
 import CodeControls from './CodeControls';
+import Loader from './Loader';
 
 export {
     Toggle,
@@ -10,4 +11,5 @@ export {
     StatusIndicator,
     CodeEditor,
     CodeControls,
+    Loader,
 };
