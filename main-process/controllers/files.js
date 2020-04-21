@@ -19,7 +19,6 @@ const saveToFile = (event, args) => {
 const getFileContent = (event, args) => {
     const { path, responseEventName } = args;
     const content = compose.getFile(path);
-    console.log(path, content);
     event.sender.send(responseEventName, { content, path });
 };
 

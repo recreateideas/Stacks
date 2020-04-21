@@ -14,6 +14,7 @@ const openTerminalWithCommand = (commandName, args) => {
     const scriptFile = 'command.sh';
     fs.writeFileSync(`${scriptFile}`, command);
     fs.chmodSync(scriptFile, '755');
+    // TODO: add Win and Linux compatibility
     childProcess.spawnSync('open', ['-a', 'Terminal', scriptFile]);
 };
 
