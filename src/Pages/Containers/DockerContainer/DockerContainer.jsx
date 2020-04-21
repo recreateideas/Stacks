@@ -9,6 +9,7 @@ import {
 import { StatusIndicator } from '../../../components';
 import Actions from './Actions';
 import ExtendedPanel from './ExtendedPanel';
+import { openTerminalWithCommand } from '../../../utils';
 
 const DockerContainer = (props) => {
     const { data, onShowLogs } = props;
@@ -45,6 +46,9 @@ const DockerContainer = (props) => {
                     serviceName,
                 };
                 dispatch(runContainerAction(args));
+                break;
+            case 'docker-exec':
+                openTerminalWithCommand('docker-exec', { serviceName });
                 break;
             case 'logs':
                 onShowLogs({ serviceName });
