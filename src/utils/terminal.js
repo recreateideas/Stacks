@@ -14,7 +14,7 @@ const openTerminalWithCommand = (commandName, args) => {
     const scriptFile = 'command.sh';
     fs.writeFileSync(`${scriptFile}`, command);
     fs.chmodSync(scriptFile, '755');
-    childProcess.spawn('open', ['-a', 'Terminal', scriptFile]);
+    childProcess.spawnSync('open', ['-a', 'Terminal', scriptFile]);
 };
 
 export {
