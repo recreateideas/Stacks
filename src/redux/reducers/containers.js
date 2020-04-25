@@ -14,6 +14,7 @@ const CONTAINERS = (oldState = initialState.CONTAINERS, action) => {
                 [data.containerId]: {
                     ...state[data.containerId],
                     extraData: data.extradata,
+                    loading: false,
                 },
             };
         case types.SET_CONTAINER_INFO:

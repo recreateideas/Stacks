@@ -26,6 +26,7 @@ const Container = styled(SlotItem)`
     .loader.boxed {
         position: absolute;
         width: calc(100% - 16px);
+        height: calc(100% - 16px);
         z-index: 11; /* to be over the actions panel */
     }
 `;
