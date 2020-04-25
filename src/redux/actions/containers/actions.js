@@ -27,7 +27,21 @@ ipcRenderer.on('container-inspected-data', (event, payload) => {
     });
 });
 
-const runContainerAction = args => () => ipcRenderer.send('container-action', args);
+const runContainerAction = args => (dispatch) => {
+    const { containerId } = args;
+    dispatch({
+        type: types.SET_CONTAINER_INFO,
+        data: { containerId, info: { loading: true } },
+    });
+    ipcRenderer.send('container-action', args);
+};
+/* ipcRenderer.on('container-action-result', (event, payload) => {
+    const { containerId } = payload;
+    store.dispatch({
+        type: types.SET_CONTAINER_INFO,
+        data: { containerId, info: { loading: false } },
+    });
+}); */
 
 ipcRenderer.on('new-docker-events', (e, events) => {
     store.dispatch({

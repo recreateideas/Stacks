@@ -16,6 +16,14 @@ const CONTAINERS = (oldState = initialState.CONTAINERS, action) => {
                     extraData: data.extradata,
                 },
             };
+        case types.SET_CONTAINER_INFO:
+            return {
+                ...state,
+                [data.containerId]: {
+                    ...state[data.containerId],
+                    ...data.info,
+                },
+            };
         default:
             return state;
     }

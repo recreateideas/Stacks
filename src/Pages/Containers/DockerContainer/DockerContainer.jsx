@@ -1,20 +1,24 @@
 /* eslint-disable no-case-declarations */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { actions } from '../../../redux';
+import { actions, selectors, useSelector } from '../../../redux';
 import propTypes from './propTypes';
 import {
     Container, MainData, Row, Cell, Label, Value, Table, Strong,
 } from './styles';
-import { StatusIndicator } from '../../../components';
+import { StatusIndicator, Loader } from '../../../components';
 import Actions from './Actions';
 import ExtendedPanel from './ExtendedPanel';
 import { openTerminalWithCommand } from '../../../utils';
 
 const DockerContainer = (props) => {
-    const { data, onShowLogs } = props;
+    const { containerId, onShowLogs } = props;
+    const dispatch = useDispatch();
+    const [isExpanded, setIsExpanded] = useState(false);
+    const { containers: { runContainerAction } } = actions;
+    const { containers: containersSelectors } = selectors;
+    const containerData = useSelector(containersSelectors.container(containerId));
     const {
-        ID: id = 'N/A',
         Image: image,
         Size: size = 'N/A',
         Labels: {
@@ -25,10 +29,8 @@ const DockerContainer = (props) => {
         Ports: ports = 'NA',
         Status: status = 'N/A',
         RunningFor: runningFor = 'N/A',
-    } = data;
-    const dispatch = useDispatch();
-    const { containers: { runContainerAction } } = actions;
-    const [isExpanded, setIsExpanded] = useState(false);
+        loading: isLoading,
+    } = containerData;
     const isRunning = /^Up/.test(status);
     const handleAction = (action) => {
         switch (action) {
@@ -44,6 +46,7 @@ const DockerContainer = (props) => {
                     action,
                     composeFile,
                     serviceName,
+                    containerId,
                 };
                 dispatch(runContainerAction(args));
                 break;
@@ -58,6 +61,7 @@ const DockerContainer = (props) => {
     };
     return (
         <Container className="container">
+            {isLoading && <Loader type="dots" mode="boxed" />}
             <MainData>
                 <Table>
                     <Row>
@@ -66,8 +70,8 @@ const DockerContainer = (props) => {
                         </Cell>
                         <Cell>
                             <Row>
-                                <Label className="id">ID:</Label>
-                                <Value className="id">{id}</Value>
+                                <Label className="containerId">ID:</Label>
+                                <Value className="containerId">{containerId}</Value>
                             </Row>
                         </Cell>
                     </Row>
@@ -117,9 +121,10 @@ const DockerContainer = (props) => {
             </MainData>
             <ExtendedPanel
                 isExpanded={isExpanded}
-                containerId={id}
+                containerId={containerId}
                 serviceName={serviceName}
             />
+
         </Container>
     );
 };

@@ -35,7 +35,7 @@ const containerAction = (event, args) => {
     const { composeFile } = args;
     const service = composeFile ? compose : docker;
     const result = service.containerAction(args);
-    event.sender.send('container-action-result', result);
+    event.sender.send('container-action-result', { ...args, result });
 };
 
 const inspectContainer = (event, args) => {

@@ -23,10 +23,10 @@ const Actions = (props) => {
             <Action className={`stop with-hover ${stopStatusClass}`}>
                 <Eject onClick={() => onClick('stop')} />
             </Action>
-            <Action className="with-hover">
+            <Action className="with-hover inactive">
                 <HdrWeak onClick={() => onClick('clone')} />
             </Action>
-            <Action className="with-hover">
+            <Action className="with-hover inactive">
                 <List onClick={() => onClick('logs')} />
             </Action>
             <Action className="with-hover exec">

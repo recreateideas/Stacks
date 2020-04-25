@@ -20,7 +20,13 @@ const Container = styled(SlotItem)`
         }
         .actions {
             visibility: visible;
+            z-index: 10;
         }
+    }
+    .loader.boxed {
+        position: absolute;
+        width: calc(100% - 16px);
+        z-index: 11; /* to be over the actions panel */
     }
 `;
 
@@ -54,7 +60,7 @@ const Label = styled.div`
     color: ${props => props.theme.palette.neutral['500']};
     margin-right: 4px;
     letter-spacing: .5px;
-    &.id {
+    &.containerId {
         line-height: 21px;
     }
 `;
@@ -62,7 +68,7 @@ const Label = styled.div`
 const Value = styled.div`
     font-weight: 400;
     color: ${props => props.theme.palette.neutral['500']};
-    &.id {
+    &.containerId {
         line-height: 21px;
     }
 `;

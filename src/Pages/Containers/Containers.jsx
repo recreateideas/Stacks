@@ -24,10 +24,10 @@ const Containers = () => {
             <Slots>
                 {Object
                     .keys(containers)
-                    .map(id => (
+                    .map(containerId => (
                         <DockerContainer
-                            key={id}
-                            data={containers[id]}
+                            key={containerId}
+                            containerId={containerId}
                             onShowLogs={showLogs}
                         />
                     ))}
