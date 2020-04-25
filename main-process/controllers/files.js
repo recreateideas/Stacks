@@ -1,3 +1,5 @@
+const { dialog } = require('electron');
+const jsonLoader = require('js-yaml');
 const { compose } = require('../services');
 
 const saveToFile = (event, args) => {
@@ -22,7 +24,34 @@ const getFileContent = (event, args) => {
     event.sender.send(responseEventName, { content, path });
 };
 
+const selectMultipleFiles = (event, args) => {
+    const { options: optionsArgs, parseToJson } = args;
+    const options = {
+        properties: ['openFile', 'multiSelections'],
+        ...optionsArgs,
+    };
+    const paths = dialog.showOpenDialogSync(options);
+    const doesNothing = res => res;
+    const files = paths.reduce((allFiles, path) => {
+        const parsedPath = path.split('.');
+        const extension = parsedPath[parsedPath.length - 1];
+        const middlewares = {
+            json: doesNothing,
+            yaml: jsonLoader.safeLoad,
+            yml: jsonLoader.safeLoad,
+        };
+        const middleware = parseToJson && middlewares[extension] ? middlewares[extension] : doesNothing;
+        const content = middleware(compose.getFile(path));
+        return {
+            ...allFiles,
+            [path]: content,
+        };
+    }, {});
+    event.sender.send('selected-file-paths', { ...args, files });
+};
+
 module.exports = {
     saveToFile,
     getFileContent,
+    selectMultipleFiles,
 };

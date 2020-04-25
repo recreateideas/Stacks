@@ -34,6 +34,31 @@ ipcRenderer.on('yaml-content', (event, data) => {
     });
 });
 
+const findFiles = fileTypes => () => {
+    const typesExtensionsMap = {
+        projects: ['yaml', 'yml', 'json', 'js'],
+    };
+    const type = fileTypes[0];
+    const extensions = typesExtensionsMap[type]; // replace with .map for multiple filters
+    const options = {
+        filters: [
+            {
+                name: 'Custom File Type',
+                extensions,
+            },
+        ],
+    };
+    const payload = { type, options, parseToJson: true };
+    ipcRenderer.send('select-multiple-files', payload);
+};
+ipcRenderer.on('selected-file-paths', (event, data) => {
+    const { files /* , type */ } = data;
+    store.dispatch({
+        type: types.SET_YAMLS_CONTENTS,
+        data: { files },
+    });
+});
+
 ipcRenderer.on('window-ready', (event, data) => {
     const { view } = data;
     switch (view) {
@@ -50,4 +75,5 @@ export {
     getYamlContent,
     projectsLoadPending,
     projectsLoadComplete,
+    findFiles,
 };

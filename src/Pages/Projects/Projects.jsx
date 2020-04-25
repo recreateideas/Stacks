@@ -10,7 +10,7 @@ import { Loader } from '../../components';
 
 const Projects = () => {
     const dispatch = useDispatch();
-    const { projects: { getProjects, projectsLoadPending } } = actions;
+    const { projects: { getProjects, projectsLoadPending, findFiles } } = actions;
     const { projects: projectSelectors } = selectors;
     const projects = useSelector(projectSelectors.projects);
     const projectsLoading = useSelector(projectSelectors.projectsLoading);
@@ -23,6 +23,9 @@ const Projects = () => {
         };
         dispatch(projectsLoadPending);
         openViewInNewWindow('ProjectEditYaml', config);
+    };
+    const addProjects = () => {
+        dispatch(findFiles(['projects']));
     };
     useEffect(() => {
         dispatch(getProjects());
@@ -49,7 +52,7 @@ const Projects = () => {
             </Slots>
             { projectsLoading && <Loader type="dots" mode="full-screen" /> }
             <AddProject>
-                <AddCircleOutline />
+                <AddCircleOutline onClick={addProjects}/>
             </AddProject>
         </Container>
     );

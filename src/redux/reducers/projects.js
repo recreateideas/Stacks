@@ -11,6 +11,11 @@ const PROJECTS = (oldState = initialState.PROJECTS, action) => {
         case types.SET_YAML_CONTENT:
             state.yamls[data.path] = data.content;
             return state;
+        case types.SET_YAMLS_CONTENTS:
+            return {
+                ...state,
+                ...data.files,
+            };
         case types.SET_PROJECTS_LOAD_PENDING:
             return {
                 ...state,
