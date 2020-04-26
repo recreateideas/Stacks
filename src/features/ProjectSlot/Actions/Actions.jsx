@@ -19,7 +19,7 @@ const Actions = (props) => {
                 <Code onClick={() => onClick('yaml')} />
             </Action>
             <Action className="start with-hover">
-                <StartIcon onClick={() => !isActive && onClick('up')} />
+                <StartIcon onClick={() => onClick('up')} />
             </Action>
             <Action className={`stop with-hover ${stopStatusClass}`}>
                 <Eject onClick={() => isActive && onClick('down')} />

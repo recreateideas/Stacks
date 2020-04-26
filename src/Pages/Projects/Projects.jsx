@@ -42,7 +42,7 @@ const Projects = () => {
     }, []);
     return (
         <Container className="projects-page">
-            {['localStorage', 'live'].map((category, i) => {
+            {['localStorage'].map((category, i) => {
                 const titleMap = {
                     localStorage: 'Saved',
                     live: 'Currently Up',

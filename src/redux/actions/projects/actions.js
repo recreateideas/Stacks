@@ -4,6 +4,23 @@ import store from '../../store';
 
 const { ipcRenderer } = window.require('electron');
 
+const mergeProjects = (projects1, projects2) => {
+    const merged = {};
+    Object.keys(projects1).forEach((path1) => {
+        if (Object.keys(projects2).includes(path1)) {
+            merged[path1] = { ...projects1[path1], ...projects2[path1] };
+        } else {
+            merged[path1] = projects1[path1];
+        }
+    });
+    Object.keys(projects2).forEach((path2) => {
+        if (!merged[path2]) {
+            merged[path2] = projects2[path2];
+        }
+    });
+    return merged;
+};
+
 const updateLocalStorage = item => (value, defaultValue = '{}') => {
     const savedItems = localStorage.getItem(item) || defaultValue;
     const allSavedItems = { ...JSON.parse(savedItems), ...value };
@@ -27,18 +44,18 @@ const projectsLoadComplete = ({
     type: types.SET_PROJECTS_LOAD_COMPLETE,
 });
 
-const getProjects = () => () => {
-    const savedProjects = localStorage.getItem('projects') || '{}';
+const getProjects = () => () => ipcRenderer.send('get-projects');
+
+ipcRenderer.on('projects', (event, liveProjects) => {
+    const savedProjects = JSON.parse(localStorage.getItem('projects') || '{}');
+    const mergedProjects = mergeProjects(savedProjects, liveProjects);
     store.dispatch({
         type: types.SET_LS_PROJECTS,
-        data: JSON.parse(savedProjects),
+        data: mergedProjects,
     });
-    ipcRenderer.send('get-projects');
-};
-ipcRenderer.on('projects', (event, projects) => {
     store.dispatch({
         type: types.SET_LIVE_PROJECTS,
-        data: projects,
+        data: liveProjects,
     });
 });
 
@@ -86,9 +103,7 @@ const runComposeAction = args => (dispatch) => {
     ipcRenderer.send('compose-action', args);
 };
 
-ipcRenderer.on('new-docker-events', (e, events) => {
-    // action is dispatched in containers
-    console.log(events);
+ipcRenderer.on('new-docker-events', (e, events) => { // action is dispatched in containers
     const hasNetworkEvents = !!events.filter(event => event.Type === 'network').length;
     if (hasNetworkEvents) {
         getProjects()();

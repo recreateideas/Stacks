@@ -17,8 +17,8 @@ const ProjectSlot = (props) => {
     const dispatch = useDispatch();
     const [isExpanded, setIsExpanded] = useState(false);
     const { projects: { runComposeAction } } = actions;
-    const { config = {}, activeServices = {} } = project;
-    const { name: projectName = 'Unnamed Project', version = 'N/A', networks } = config;
+    const { config = {}, activeServices = {}, name: projectName = 'Unnamed Project' } = project;
+    const { version = 'N/A', networks } = config;
     const networkNames = Object.keys(networks).join(', ');
     const { length: containersNo } = Object.keys(config.services);
     const displayPath = `${path.replace(/^\//, '')}/`;
@@ -46,12 +46,12 @@ const ProjectSlot = (props) => {
     };
     const onNameChange = (name) => {
         const updatedProject = project;
-        updatedProject.config.name = name;
+        updatedProject.name = name;
         onProjectUpdate({ [path]: updatedProject });
     };
     const statusMap = {
-        true: 'Running',
-        false: 'Stopped',
+        true: 'Up',
+        false: 'Down',
     };
     const status = statusMap[isActive.toString()];
     const isLoading = false;

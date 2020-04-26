@@ -59,11 +59,10 @@ ipcRenderer.on('new-docker-events', (e, events) => {
     }
 });
 
-ipcRenderer.on('new-container-logs', (e, logs) => {
+ipcRenderer.on('new-container-logs', (/* e, logs */) => {
     store.dispatch({
         type: types.NEW_DOCKER_LOGS,
     });
-    console.log(logs);
 });
 
 export {
