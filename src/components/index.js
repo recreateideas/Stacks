@@ -5,6 +5,7 @@ import CodeEditor from './CodeEditor';
 import CodeControls from './CodeControls';
 import Loader from './Loader';
 import HeroImage from './HeroImage';
+import EditField from './EditField';
 
 export {
     Toggle,
@@ -14,4 +15,5 @@ export {
     CodeControls,
     Loader,
     HeroImage,
+    EditField,
 };
