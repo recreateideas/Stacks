@@ -2,8 +2,8 @@ import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import { ConnectedRouter as Router } from 'connected-react-router';
 import { Switch, Redirect, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { history, actions } from '../redux';
+import { history } from '../redux';
+import useGetAllData from './useGetAllData';
 import { routes } from '../routes';
 import {
     AuthenticatedRoute, Header, ErrorBoundary, SideBar, WindowHeader,
@@ -11,21 +11,6 @@ import {
 import { Application, PageContainer, PageContent } from './styles';
 import * as views from '../Pages';
 
-const useGetAllData = () => {
-    const dispatch = useDispatch();
-    const {
-        containers: { getContainers },
-        projects: { getProjects },
-        images: { getImages },
-        volumes: { getVolumes },
-        networks: { getNetworks },
-    } = actions;
-    dispatch(getContainers());
-    dispatch(getProjects());
-    dispatch(getImages());
-    dispatch(getVolumes());
-    dispatch(getNetworks());
-};
 
 const App = () => {
     const { location: { search } } = window;

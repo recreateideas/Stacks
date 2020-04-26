@@ -19,8 +19,12 @@ const AddProject = styled.div`
     }
 `;
 
+const ProjectCategory = styled.div`
+`;
+
 export {
     Container,
     Slots,
     AddProject,
+    ProjectCategory,
 };

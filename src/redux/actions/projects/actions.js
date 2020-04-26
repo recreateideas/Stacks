@@ -17,10 +17,17 @@ const projectsLoadComplete = ({
     type: types.SET_PROJECTS_LOAD_COMPLETE,
 });
 
-const getProjects = () => () => ipcRenderer.send('get-projects');
+const getProjects = () => () => {
+    const savedProjects = localStorage.getItem('projects') || '{}';
+    store.dispatch({
+        type: types.SET_LS_PROJECTS,
+        data: JSON.parse(savedProjects),
+    });
+    ipcRenderer.send('get-projects');
+};
 ipcRenderer.on('projects', (event, projects) => {
     store.dispatch({
-        type: types.SET_PROJECTS,
+        type: types.SET_LIVE_PROJECTS,
         data: projects,
     });
 });
@@ -52,9 +59,12 @@ const findFiles = fileTypes => () => {
     ipcRenderer.send('select-multiple-files', payload);
 };
 ipcRenderer.on('selected-file-paths', (event, data) => {
-    const { files /* , type */ } = data;
+    const { files = {} /* , type */ } = data;
+    const savedProjects = localStorage.getItem('projects') || '{}';
+    const allSavedProjects = { ...JSON.parse(savedProjects), ...files };
+    localStorage.setItem('projects', JSON.stringify(allSavedProjects));
     store.dispatch({
-        type: types.SET_YAMLS_CONTENTS,
+        type: types.SET_PROJECTS_FROM_SELECT,
         data: { files },
     });
 });

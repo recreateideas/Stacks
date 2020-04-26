@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { AddCircleOutline } from '@material-ui/icons';
 import { actions, selectors, useSelector } from '../../redux';
-import { Container, AddProject, Slots } from './styles';
+import {
+    Container, AddProject, ProjectCategory, Slots,
+} from './styles';
 // eslint-disable-next-line import/no-cycle
 import { ProjectSlot } from '../../features';
 import { openViewInNewWindow } from '../../utils';
@@ -29,28 +31,31 @@ const Projects = () => {
     };
     useEffect(() => {
         dispatch(getProjects());
-    // eslint-disable-next-line
+        // eslint-disable-next-line
     }, []);
     return (
         <Container className="projects-page">
-            <Slots>
-                {projects && Object
-                    .keys(projects)
-                    .filter(project => project !== 'yamls' && project !== 'loading')
-                    .map((path, index) => {
-                        const project = projects[path];
-                        return (
-                            <ProjectSlot
-                                key={index}
-                                path={path}
-                                project={project}
-                                onYamlClick={() => editYaml(path)}
-                            />
-                        );
-                    })
-                }
-            </Slots>
-            { projectsLoading && <Loader type="dots" mode="full-screen" /> }
+            {['localStorage', 'live'].map((category, i) => (
+                <Slots key={i}>
+                    {projects && projects[category] && Object
+                        .keys(projects[category])
+                        .map((path, j) => {
+                            const project = projects[category][path];
+                            return (
+                                <ProjectCategory key={j} className={`category ${category}`}>
+                                    <ProjectSlot
+                                        path={path}
+                                        category={category}
+                                        project={project}
+                                        onYamlClick={() => editYaml(path)}
+                                    />
+                                </ProjectCategory>
+                            );
+                        })
+                    }
+                </Slots>
+            ))}
+            {projectsLoading && <Loader type="dots" mode="full-screen" />}
             <AddProject>
                 <AddCircleOutline onClick={addProjects} />
             </AddProject>
