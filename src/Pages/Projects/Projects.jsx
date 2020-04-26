@@ -12,7 +12,11 @@ import { Loader } from '../../components';
 
 const Projects = () => {
     const dispatch = useDispatch();
-    const { projects: { getProjects, projectsLoadPending, findFiles } } = actions;
+    const {
+        projects: {
+            setProject, getProjects, projectsLoadPending, findFiles,
+        },
+    } = actions;
     const { projects: projectSelectors } = selectors;
     const projects = useSelector(projectSelectors.projects);
     const projectsLoading = useSelector(projectSelectors.projectsLoading);
@@ -28,6 +32,9 @@ const Projects = () => {
     };
     const addProjects = () => {
         dispatch(findFiles(['projects']));
+    };
+    const updateProject = (project) => {
+        dispatch(setProject(project));
     };
     useEffect(() => {
         dispatch(getProjects());
@@ -56,6 +63,7 @@ const Projects = () => {
                                             category={category}
                                             project={project}
                                             onYamlClick={() => editYaml(path)}
+                                            onProjectUpdate={updateProject}
                                         />
                                     );
                                 })

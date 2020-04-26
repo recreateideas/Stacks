@@ -32,6 +32,18 @@ const Container = styled(SlotItem)`
         height: calc(100% - 16px);
         z-index: 11; /* to be over the actions panel */
     }
+    .slot-name {
+        .edit-label {
+            font-weight: 800;
+            font-size: 18px;
+        }
+       .edit-input {
+            font-weight: 800;
+            font-size: 18px;
+            padding: 0px;
+            background-color: ${props => props.theme.palette.primary['100']};
+       } 
+    }
 `;
 
 const MainData = styled.div`
@@ -88,11 +100,6 @@ const Value = styled.div`
     }
 `;
 
-const Strong = styled.div`
-    font-weight: 800;
-    font-size: 18px;
-`;
-
 export {
     Path,
     Container,
@@ -102,5 +109,4 @@ export {
     MainData,
     Label,
     Value,
-    Strong,
 };

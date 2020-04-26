@@ -4,10 +4,20 @@ import store from '../../store';
 
 const { ipcRenderer } = window.require('electron');
 
-const setProject = project => ({
-    type: types.SET_PROJECT,
-    data: project,
-});
+const updateLocalStorage = item => (value, defaultValue = '{}') => {
+    const savedItems = localStorage.getItem(item) || defaultValue;
+    const allSavedItems = { ...JSON.parse(savedItems), ...value };
+    localStorage.setItem('projects', JSON.stringify(allSavedItems));
+    return allSavedItems;
+};
+
+const setProject = project => (dispatch) => {
+    const allSavedProjects = updateLocalStorage('projects')(project);
+    dispatch({
+        type: types.SET_LS_PROJECTS,
+        data: allSavedProjects,
+    });
+};
 
 const projectsLoadPending = ({
     type: types.SET_PROJECTS_LOAD_PENDING,
@@ -60,11 +70,9 @@ const findFiles = fileTypes => () => {
 };
 ipcRenderer.on('selected-file-paths', (event, data) => {
     const { files = {} /* , type */ } = data;
-    const savedProjects = localStorage.getItem('projects') || '{}';
-    const allSavedProjects = { ...JSON.parse(savedProjects), ...files };
-    localStorage.setItem('projects', JSON.stringify(allSavedProjects));
+    updateLocalStorage('projects')(files);
     store.dispatch({
-        type: types.SET_PROJECTS_FROM_SELECT,
+        type: types.SET_LS_PROJECTS,
         data: { files },
     });
 });

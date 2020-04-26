@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 
 const propTypes = {
-    someProp: PropTypes.string,
+    value: PropTypes.string,
+    onChange: PropTypes.func,
 };
 
 export default propTypes;

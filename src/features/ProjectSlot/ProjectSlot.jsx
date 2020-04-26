@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import propTypes from './propTypes';
 import {
-    Container, Path, MainData, Table, Row, Cell, Label, Value, Strong,
+    Container, Path, MainData, Table, Row, Cell, Label, Value,
 } from './styles';
 import Actions from './Actions';
-import { StatusIndicator, Loader } from '../../components';
+import { StatusIndicator, Loader, EditField } from '../../components';
 import DetailsDrawer from './DetailsDrawer';
 
 const ProjectSlot = (props) => {
-    const { onYamlClick, path, project } = props;
+    const {
+        onYamlClick, path, project, onProjectUpdate,
+    } = props;
     const [isExpanded, setIsExpanded] = useState(false);
     const { name: projectName = 'Unnamed Project', version = 'N/A', networks } = project;
     const networkNames = Object.keys(networks).join(', ');
@@ -25,6 +27,11 @@ const ProjectSlot = (props) => {
             default: break;
         }
     };
+    const onNameChange = (name) => {
+        const updatedProject = project;
+        updatedProject.name = name;
+        onProjectUpdate({ [path]: updatedProject });
+    };
     const statusActive = true;
     const statusMap = {
         true: 'Active',
@@ -38,8 +45,8 @@ const ProjectSlot = (props) => {
             <MainData className="project-slot">
                 <Table>
                     <Row>
-                        <Cell>
-                            <Strong className="slot-name interactive">{projectName}</Strong>
+                        <Cell className="slot-name interactive">
+                            <EditField value={projectName} onChange={onNameChange} />
                         </Cell>
                     </Row>
                     <Row>
