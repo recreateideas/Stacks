@@ -52,7 +52,7 @@ const Projects = () => {
             </Slots>
             { projectsLoading && <Loader type="dots" mode="full-screen" /> }
             <AddProject>
-                <AddCircleOutline onClick={addProjects}/>
+                <AddCircleOutline onClick={addProjects} />
             </AddProject>
         </Container>
     );

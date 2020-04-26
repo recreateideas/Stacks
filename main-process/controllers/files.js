@@ -30,7 +30,7 @@ const selectMultipleFiles = (event, args) => {
         properties: ['openFile', 'multiSelections'],
         ...optionsArgs,
     };
-    const paths = dialog.showOpenDialogSync(options);
+    const paths = dialog.showOpenDialogSync(options) || [];
     const doesNothing = res => res;
     const files = paths.reduce((allFiles, path) => {
         const parsedPath = path.split('.');

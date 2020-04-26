@@ -4,6 +4,7 @@ import StatusIndicator from './StatusIndicator';
 import CodeEditor from './CodeEditor';
 import CodeControls from './CodeControls';
 import Loader from './Loader';
+import HeroImage from './HeroImage';
 
 export {
     Toggle,
@@ -12,4 +13,5 @@ export {
     CodeEditor,
     CodeControls,
     Loader,
+    HeroImage,
 };
