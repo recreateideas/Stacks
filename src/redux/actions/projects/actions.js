@@ -77,6 +77,24 @@ ipcRenderer.on('selected-configs', (event, data) => {
     });
 });
 
+const runComposeAction = args => (dispatch) => {
+    const { composeFile: path, category } = args;
+    dispatch({
+        type: types.SET_PROJECT_INFO,
+        data: { category, path, info: { loading: true } },
+    });
+    ipcRenderer.send('compose-action', args);
+};
+
+ipcRenderer.on('new-docker-events', (e, events) => {
+    // action is dispatched in containers
+    console.log(events);
+    const hasNetworkEvents = !!events.filter(event => event.Type === 'network').length;
+    if (hasNetworkEvents) {
+        getProjects()();
+    }
+});
+
 ipcRenderer.on('window-ready', (event, data) => {
     const { view } = data;
     switch (view) {
@@ -94,4 +112,5 @@ export {
     projectsLoadPending,
     projectsLoadComplete,
     findFiles,
+    runComposeAction,
 };

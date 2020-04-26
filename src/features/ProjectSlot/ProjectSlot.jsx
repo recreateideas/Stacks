@@ -1,4 +1,7 @@
+/* eslint-disable no-case-declarations */
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { actions } from '../../redux';
 import propTypes from './propTypes';
 import {
     Container, Path, MainData, Table, Row, Cell, Label, Value,
@@ -9,16 +12,17 @@ import DetailsDrawer from './DetailsDrawer';
 
 const ProjectSlot = (props) => {
     const {
-        onYamlClick, path, project = {}, onProjectUpdate,
+        onYamlClick, path, project = {}, onProjectUpdate, category,
     } = props;
-    console.log(project);
+    const dispatch = useDispatch();
     const [isExpanded, setIsExpanded] = useState(false);
+    const { projects: { runComposeAction } } = actions;
     const { config = {}, activeServices = {} } = project;
     const { name: projectName = 'Unnamed Project', version = 'N/A', networks } = config;
     const networkNames = Object.keys(networks).join(', ');
     const { length: containersNo } = Object.keys(config.services);
     const displayPath = `${path.replace(/^\//, '')}/`;
-    const statusActive = !!Object.values(activeServices).length
+    const isActive = !!Object.values(activeServices).length
         && Object.values(activeServices).every(status => status);
     const handleAction = (action) => {
         switch (action) {
@@ -27,6 +31,15 @@ const ProjectSlot = (props) => {
                 break;
             case 'yaml':
                 onYamlClick();
+                break;
+            case 'up':
+            case 'down':
+                const args = {
+                    action,
+                    category,
+                    composeFile: path,
+                };
+                dispatch(runComposeAction(args));
                 break;
             default: break;
         }
@@ -40,7 +53,7 @@ const ProjectSlot = (props) => {
         true: 'Running',
         false: 'Stopped',
     };
-    const status = statusMap[statusActive.toString()];
+    const status = statusMap[isActive.toString()];
     const isLoading = false;
     return (
         <Container>
@@ -78,7 +91,7 @@ const ProjectSlot = (props) => {
                     </Row>
                     <Row>
                         <Cell className="status">
-                            <StatusIndicator isActive={statusActive} />
+                            <StatusIndicator isActive={isActive} />
                             <Label>Status:</Label>
                             <Value>{status}</Value>
                         </Cell>
@@ -86,7 +99,7 @@ const ProjectSlot = (props) => {
                 </Table>
                 <Actions
                     onSelect={handleAction}
-                    statusActive={statusActive}
+                    isActive={isActive}
                     isExpanded={isExpanded}
                 />
             </MainData>

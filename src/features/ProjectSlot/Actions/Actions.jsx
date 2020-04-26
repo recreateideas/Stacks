@@ -1,28 +1,28 @@
 import React from 'react';
 import {
-    PlayCircleOutline, Eject, Code, ExpandMore, ExpandLess,
+    PlayCircleOutline, Eject, Code, ExpandMore, ExpandLess, RotateLeft,
 } from '@material-ui/icons';
 import propTypes from './propTypes';
 import { Container, Action } from './styles';
 
 const Actions = (props) => {
-    const { onSelect, isExpanded, statusActive } = props;
+    const { onSelect, isExpanded, isActive } = props;
     const onClick = (action) => {
         onSelect(action);
     };
     const ExpandIcon = isExpanded ? ExpandMore : ExpandLess;
-    const startStatusClass = statusActive ? 'inactive' : '';
-    const stopStatusClass = !statusActive ? 'inactive' : '';
+    const StartIcon = isActive ? RotateLeft : PlayCircleOutline;
+    const stopStatusClass = !isActive ? 'inactive' : '';
     return (
         <Container className="actions">
             <Action className="yaml with-hover">
                 <Code onClick={() => onClick('yaml')} />
             </Action>
-            <Action className={`start with-hover ${startStatusClass}`}>
-                <PlayCircleOutline onClick={() => !statusActive && onClick('start')} />
+            <Action className="start with-hover">
+                <StartIcon onClick={() => !isActive && onClick('up')} />
             </Action>
             <Action className={`stop with-hover ${stopStatusClass}`}>
-                <Eject onClick={() => statusActive && onClick('stop')} />
+                <Eject onClick={() => isActive && onClick('down')} />
             </Action>
             <Action className="expand with-hover">
                 <ExpandIcon onClick={() => onClick('expand')} />

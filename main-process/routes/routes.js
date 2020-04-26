@@ -19,4 +19,6 @@ ipcMain.on('get-networks', docker.getNetworks);
 
 ipcMain.on('container-action', docker.containerAction);
 
+ipcMain.on('compose-action', docker.composeAction);
+
 ipcMain.on('inspect-container', docker.inspectContainer);

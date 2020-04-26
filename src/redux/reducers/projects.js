@@ -10,7 +10,6 @@ const PROJECTS = (oldState = initialState.PROJECTS, action) => {
             return {
                 ...state,
                 live: {
-                    ...state.live,
                     ...data,
                 },
             };
@@ -34,6 +33,17 @@ const PROJECTS = (oldState = initialState.PROJECTS, action) => {
             return {
                 ...state,
                 loading: false,
+            };
+        case types.SET_PROJECT_INFO:
+            return {
+                ...state,
+                [data.category]: {
+                    ...state[data.category],
+                    [data.path]: {
+                        ...state[data.category][data.path],
+                        ...data.info,
+                    },
+                },
             };
         default:
             return state;

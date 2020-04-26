@@ -57,6 +57,11 @@ const containerAction = (event, args) => {
     event.sender.send('container-action-result', { ...args, result });
 };
 
+const composeAction = (event, args) => {
+    const result = compose.composeAction(args);
+    event.sender.send('compose-action-result', { ...args, result });
+};
+
 const inspectContainer = (event, args) => {
     const { serviceName, containerId } = args;
     const [container] = docker.inspectContainer(serviceName);
@@ -72,5 +77,6 @@ module.exports = {
     getVolumes,
     getNetworks,
     containerAction,
+    composeAction,
     inspectContainer,
 };

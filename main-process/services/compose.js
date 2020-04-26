@@ -3,8 +3,8 @@ const json = require('js-yaml');
 const childProcess = require('child_process');
 const yaml = require('json-to-pretty-yaml');
 
-const _runCommand = (command, parse) => {
-    const output = childProcess.execSync(command).toString();
+const _runCommand = (command, parse, type = 'execSync') => {
+    const output = childProcess[type](command).toString();
     return parse ? JSON.parse(output) : output;
 };
 
@@ -32,6 +32,15 @@ const containerAction = (args) => {
     return result;
 };
 
+const composeAction = (args) => {
+    const {
+        composeFile, action, serviceName = '', options = '',
+    } = args;
+    const command = `docker-compose -f ${composeFile} ${action} ${serviceName} ${options}`.trim();
+    const result = _runCommand(command, false, 'exec');
+    return result;
+};
+
 module.exports = {
     getFile,
     getYamlAsJSON,
@@ -39,4 +48,5 @@ module.exports = {
     saveJsonAsYaml,
     saveAsIs,
     containerAction,
+    composeAction,
 };
