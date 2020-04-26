@@ -15,11 +15,12 @@ const Container = styled(SlotItem)`
         visibility: hidden;
     }
     &:hover {
-        .service-name {
+        .slot-name {
             color: ${props => props.theme.palette.primary['400']};
         }
         .actions {
             visibility: visible;
+            height: calc(100% - 16px);
             z-index: 10;
         }
     }

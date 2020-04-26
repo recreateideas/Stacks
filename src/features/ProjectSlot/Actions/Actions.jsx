@@ -24,7 +24,7 @@ const Actions = (props) => {
             <Action className={`stop with-hover ${stopStatusClass}`}>
                 <Eject onClick={() => statusActive && onClick('stop')} />
             </Action>
-            <Action className="expand">
+            <Action className="expand with-hover">
                 <ExpandIcon onClick={() => onClick('expand')} />
             </Action>
         </Container>
