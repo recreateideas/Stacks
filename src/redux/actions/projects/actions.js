@@ -66,14 +66,14 @@ const findFiles = fileTypes => () => {
         ],
     };
     const payload = { type, options, parseToJson: true };
-    ipcRenderer.send('select-multiple-files', payload);
+    ipcRenderer.send('select-multiple-configs', payload);
 };
-ipcRenderer.on('selected-file-paths', (event, data) => {
+ipcRenderer.on('selected-configs', (event, data) => {
     const { files = {} /* , type */ } = data;
     updateLocalStorage('projects')(files);
     store.dispatch({
         type: types.SET_LS_PROJECTS,
-        data: { files },
+        data: files,
     });
 });
 

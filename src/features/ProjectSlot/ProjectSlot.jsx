@@ -9,13 +9,17 @@ import DetailsDrawer from './DetailsDrawer';
 
 const ProjectSlot = (props) => {
     const {
-        onYamlClick, path, project, onProjectUpdate,
+        onYamlClick, path, project = {}, onProjectUpdate,
     } = props;
+    console.log(project);
     const [isExpanded, setIsExpanded] = useState(false);
-    const { name: projectName = 'Unnamed Project', version = 'N/A', networks } = project;
+    const { config = {}, activeServices = {} } = project;
+    const { name: projectName = 'Unnamed Project', version = 'N/A', networks } = config;
     const networkNames = Object.keys(networks).join(', ');
-    const { length: containersNo } = Object.keys(project.services);
+    const { length: containersNo } = Object.keys(config.services);
     const displayPath = `${path.replace(/^\//, '')}/`;
+    const statusActive = !!Object.values(activeServices).length
+        && Object.values(activeServices).every(status => status);
     const handleAction = (action) => {
         switch (action) {
             case 'expand':
@@ -29,13 +33,12 @@ const ProjectSlot = (props) => {
     };
     const onNameChange = (name) => {
         const updatedProject = project;
-        updatedProject.name = name;
+        updatedProject.config.name = name;
         onProjectUpdate({ [path]: updatedProject });
     };
-    const statusActive = true;
     const statusMap = {
-        true: 'Active',
-        false: 'Inactive',
+        true: 'Running',
+        false: 'Stopped',
     };
     const status = statusMap[statusActive.toString()];
     const isLoading = false;

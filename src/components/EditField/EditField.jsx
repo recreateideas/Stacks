@@ -18,6 +18,11 @@ const EditField = (props) => {
         setIsInputMode(false);
         onChangeProp(label);
     };
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            onBlur();
+        }
+    };
     return (
         <Container onClick={onClick}>
             {isInputMode
@@ -29,6 +34,7 @@ const EditField = (props) => {
                         onChange={onChange}
                         onBlur={onBlur}
                         width={inputWidth}
+                        onKeyPress={handleKeyPress}
                         autoFocus
                     />
                 )

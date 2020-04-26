@@ -2,8 +2,7 @@ import React from 'react';
 import propTypes from './propTypes';
 import {} from './styles';
 
-const DetailsDrawer = (props) => {
-    console.log(props);
+const DetailsDrawer = () => {
     return (<div />);
 };
 

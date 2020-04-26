@@ -10,8 +10,27 @@ const getProjects = (event) => {
     const all = true;
     const containers = docker.listContainers(all);
     const projectsPaths = Object.keys(containers).map(id => containers[id].Labels['com.docker.compose.project.config_files']);
+    const statuses = Object.keys(containers).reduce((accumulator, id) => {
+        const { Labels, Status } = containers[id];
+        const path = Labels['com.docker.compose.project.config_files'];
+        const serviceName = Labels['com.docker.compose.service'];
+        return {
+            ...accumulator,
+            [path]: {
+                ...accumulator[path],
+                [serviceName]: /^Up/.test(Status),
+            },
+        };
+    }, {});
     const uniquePaths = projectsPaths.filter((path, index) => projectsPaths.indexOf(path) === index);
-    const projects = compose.getYamlAsObject(uniquePaths);
+    const yamls = compose.getYamlAsObject(uniquePaths);
+    const projects = Object.keys(yamls).reduce((allProjects, path) => ({
+        ...allProjects,
+        [path]: {
+            config: yamls[path],
+            activeServices: statuses[path],
+        },
+    }), {});
     event.sender.send('projects', projects);
 };
 

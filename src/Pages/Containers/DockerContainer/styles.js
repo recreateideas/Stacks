@@ -20,7 +20,7 @@ const Container = styled(SlotItem)`
         }
         .actions {
             visibility: visible;
-            height: calc(100% - 16px);
+            height: 165px;
             z-index: 10;
         }
     }

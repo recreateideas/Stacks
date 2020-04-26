@@ -45,13 +45,13 @@ const Projects = () => {
             {['localStorage', 'live'].map((category, i) => {
                 const titleMap = {
                     localStorage: 'Saved',
-                    live: 'Running',
+                    live: 'Other projects',
                 };
                 const title = titleMap[category];
                 return (
                     <ProjectCategory key={i} className={`category ${category}`}>
                         <Slots>
-                            <Title><span>{title} Projects</span></Title>
+                            {category !== 'localStorage' && <Title><span>{title} Projects</span></Title>}
                             {projects && projects[category] && Object
                                 .keys(projects[category])
                                 .map((path, j) => {

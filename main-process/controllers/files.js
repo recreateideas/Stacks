@@ -24,7 +24,7 @@ const getFileContent = (event, args) => {
     event.sender.send(responseEventName, { content, path });
 };
 
-const selectMultipleFiles = (event, args) => {
+const selectMultipleConfigs = (event, args) => {
     const { options: optionsArgs, parseToJson } = args;
     const options = {
         properties: ['openFile', 'multiSelections'],
@@ -44,14 +44,16 @@ const selectMultipleFiles = (event, args) => {
         const content = middleware(compose.getFile(path));
         return {
             ...allFiles,
-            [path]: content,
+            [path]: {
+                config: content,
+            },
         };
     }, {});
-    event.sender.send('selected-file-paths', { ...args, files });
+    event.sender.send('selected-configs', { ...args, files });
 };
 
 module.exports = {
     saveToFile,
     getFileContent,
-    selectMultipleFiles,
+    selectMultipleConfigs,
 };
